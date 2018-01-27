@@ -9,25 +9,21 @@ public class PlaneControls : MonoBehaviour {
 
     public float TargetRotZ;
     public float TargetRotX;
-    public float RotSpeedZ;
+
     public float RotSpeedX;
+    public float RotSpeedZ;
+    public float RotSpeedY;
     public float MovSpeedX;
     public float MovSpeedY;
-    public float LeftWall;
-    public float RightWall;
+    public float MovSpeedZ;
+
     private Vector3 currentRot;
     private Vector3 rotSpeedXVec;
     private Vector3 rotSpeedZVec;
     private Vector3 currentSpd;
     private Vector3 movSpeedXVec;
     private Vector3 movSpeedYVec;
-
-    public Text TextToFade;
-    public GameObject EndGameText;
-
-    private bool canFade;
-    public string FriendCode;
-
+    
     Vector3 m_LastPosition;
     PhotonView m_PhotonView;
     PhotonTransformView m_TransformView;
@@ -36,27 +32,16 @@ public class PlaneControls : MonoBehaviour {
     // Use this for initialization
     void Start () {
         r = GetComponent<Rigidbody>();
+        m_PhotonView = GetComponent<PhotonView>();
+        m_TransformView = GetComponent<PhotonTransformView>();
+        m_Animator = GetComponent<Animator>();
+
         currentRot = r.rotation.eulerAngles;
         currentSpd = r.velocity;
         rotSpeedXVec = new Vector3(RotSpeedX, 0f, 0f);
         rotSpeedZVec = new Vector3(0, 0f, RotSpeedZ);
         movSpeedXVec = new Vector3(MovSpeedX, 0f, 0f);
         movSpeedYVec = new Vector3(0f, MovSpeedY, 0f);
-        fogEnd = RenderSettings.fogEndDistance;
-        currentFogEnd = 0f;
-
-        opening = true;
-        closing = false;
-
-        fadeTextOut = false;
-        fadeTextIn = false;
-        textFadedIn = false;
-        textFadedOut = false;
-
-        TextToFade.CrossFadeColor(Color.clear, 0f, true, true, true);
-        canFade = false;
-        if (Application.absoluteURL.Contains(FriendCode) || Application.isEditor)
-            canFade = true;
     }
 
     // Update is called once per frame
@@ -73,41 +58,43 @@ public class PlaneControls : MonoBehaviour {
         if (m_PhotonView.isMine != true)
             return;
 
-        currentSpd = Vector3.zero;
+        currentSpd = transform.forward * MovSpeedZ;
         if(Input.GetAxis("Horizontal") > 0)
         {
             if (currentRot.z >= -TargetRotZ)
+            {
                 currentRot -= rotSpeedZVec;
-            if (transform.position.x <= RightWall)
-                currentSpd += movSpeedXVec;
+            }
+            currentRot += new Vector3(0f, RotSpeedY, 0f);
         }
         else if (Input.GetAxis("Horizontal") < 0)
         {
             if (currentRot.z <= TargetRotZ)
                 currentRot += rotSpeedZVec;
-            if (transform.position.x >= LeftWall)
-                currentSpd -= movSpeedXVec;
+            currentRot -= new Vector3(0f, RotSpeedY, 0f);
         }
         else
         {
             if (currentRot.z > 0f)
+            {
                 currentRot -= rotSpeedZVec;
+                currentRot -= new Vector3(0f, RotSpeedY, 0f);
+            }
             if (currentRot.z < 0f)
+            {
                 currentRot += rotSpeedZVec;
+                currentRot += new Vector3(0f, RotSpeedY, 0f);
+            }
         }
         if (Input.GetAxis("Vertical") > 0)
         {
             if (currentRot.x >= -TargetRotX)
                 currentRot -= rotSpeedXVec;
-            if (transform.position.y <= Ceiling)
-                currentSpd += movSpeedYVec;
         }
         else if (Input.GetAxis("Vertical") < 0)
         {
             if (currentRot.x <= TargetRotX)
                 currentRot += rotSpeedXVec;
-            if (transform.position.y >= Floor)
-                currentSpd -= movSpeedYVec;
         }
         else
         {
