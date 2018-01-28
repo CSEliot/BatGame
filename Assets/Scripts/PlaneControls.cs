@@ -7,6 +7,10 @@ public class PlaneControls : MonoBehaviour {
 
     private Rigidbody r;
 
+    public float MinimumHoverRotSpeedX;
+    public float MinimumHoverRotSpeedZ;
+    private bool isFlapping;
+
     public float TargetRotZ;
     public float TargetRotX;
 
@@ -29,12 +33,15 @@ public class PlaneControls : MonoBehaviour {
     PhotonTransformView m_TransformView;
     Animator m_Animator;
 
+    public GameObject CameraToSpawn;
+    private GameObject myCam;
+
     // Use this for initialization
     void Start () {
         r = GetComponent<Rigidbody>();
         m_PhotonView = GetComponent<PhotonView>();
         m_TransformView = GetComponent<PhotonTransformView>();
-        m_Animator = GetComponent<Animator>();
+        m_Animator = GetComponentInChildren<Animator>();
 
         currentRot = r.rotation.eulerAngles;
         currentSpd = r.velocity;
@@ -42,10 +49,37 @@ public class PlaneControls : MonoBehaviour {
         rotSpeedZVec = new Vector3(0, 0f, RotSpeedZ);
         movSpeedXVec = new Vector3(MovSpeedX, 0f, 0f);
         movSpeedYVec = new Vector3(0f, MovSpeedY, 0f);
+
+        if(m_PhotonView.isMine != true)
+        {
+            tag = "NetPlayer";
+        } else
+        {
+            tag = "Player";
+            myCam = Instantiate(CameraToSpawn) as GameObject;
+        }
+        CBUG.Do("My tag is: " + tag);
+
+        isFlapping = true;
     }
 
     // Update is called once per frame
     void Update() {
+
+        if(isFlapping && (   
+            Mathf.Abs(currentRot.x) < MinimumHoverRotSpeedX ||
+            Mathf.Abs(currentRot.z) < MinimumHoverRotSpeedZ ) 
+        ) {
+            isFlapping = false;
+            m_Animator.SetBool("Flap", isFlapping);
+        }
+        if(!isFlapping && (
+            Mathf.Abs(currentRot.x) > MinimumHoverRotSpeedX ||
+            Mathf.Abs(currentRot.z) > MinimumHoverRotSpeedZ ) 
+        ) {
+            isFlapping = true;
+            m_Animator.SetBool("Flap", isFlapping);
+        }
 
         if (m_PhotonView.isMine != true)
             return;
@@ -105,5 +139,23 @@ public class PlaneControls : MonoBehaviour {
         }
         r.rotation = Quaternion.Euler(currentRot);
         r.velocity = currentSpd;
+    }
+
+    [PunRPC]
+    void KillSelf ()
+    {
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        CBUG.Do("Trigger tag Name:" + other.tag + " from " + name);
+        CBUG.Do("Trigger obj Name:" + other.name + " from " + name);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        CBUG.Do("Collider tag Name:" + collision.gameObject.tag + " from " + name);
+        CBUG.Do("Collider obj Name:" + collision.gameObject.name + " from " + name);
     }
 }

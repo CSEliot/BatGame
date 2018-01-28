@@ -6,5 +6,5 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Photon Unity Networking/Demos/DemoRPGMovement/DemoRPGMovement-Scene.unity
-    guid: 04d0690ecf8bf94489c8427dd8186299
+    path: Assets/Scenes/Main.unity
+    guid: f995dcab800fa7a48b0ccff45a918589
