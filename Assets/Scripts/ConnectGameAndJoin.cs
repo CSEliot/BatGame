@@ -16,12 +16,25 @@ public class ConnectGameAndJoin : Photon.MonoBehaviour
     /// <summary>if we don't want to connect in Start(), we have to "remember" if we called ConnectUsingSettings()</summary>
     private bool ConnectInUpdate = true;
 
+    private double ServerGameTime;
+    private double oneSecond = 1f;
+    private double previousTimeCheck;
+            
+    private double WaitTime = 5f;
+    private double timeRemainingTillStart;
+
+    private double RoundTimeSpan = 180f;
+
+    string newGameKeyString = "NewGameStartTime";
+    string roundStartedKeyString = "RoundStarted";
+
+    private bool roundStarted = false;
 
     public virtual void Start()
     {
+        timeRemainingTillStart = 60f;
         Debug.Log("Game start!");
         PhotonNetwork.autoJoinLobby = false;    // we join randomly. always. no need to join a lobby to get the list of rooms.
-        CBUG.Do("" + PhotonNetwork.sendRate);
         PhotonNetwork.sendRate = 21;
         PhotonNetwork.sendRateOnSerialize = 21;
 
@@ -35,6 +48,17 @@ public class ConnectGameAndJoin : Photon.MonoBehaviour
 
             ConnectInUpdate = false;
             PhotonNetwork.ConnectUsingSettings(GameName);
+        }
+
+        if(Time.time - previousTimeCheck > oneSecond)
+        {
+            CBUG.Do("Time Remaining: " + timeRemainingTillStart);
+            timeRemainingTillStart--;
+            previousTimeCheck = Time.time;
+            if(timeRemainingTillStart < 0)
+            {
+                StartRound();
+            }
         }
     }
 
@@ -58,7 +82,7 @@ public class ConnectGameAndJoin : Photon.MonoBehaviour
     public virtual void OnPhotonRandomJoinFailed()
     {
         Debug.Log("OnPhotonRandomJoinFailed() was called by PUN. No random room available, so we create one. Calling: PhotonNetwork.CreateRoom(null, new RoomOptions() {maxPlayers = 4}, null);");
-        PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 100 }, null);
+        PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 100}, null);
     }
 
     // the following methods are implemented to give you some context. re-implement them as needed.
@@ -71,5 +95,40 @@ public class ConnectGameAndJoin : Photon.MonoBehaviour
     public void OnJoinedRoom()
     {
         Debug.Log("OnJoinedRoom() called by PUN. Now this client is in a room. From here on, your game would be running. For reference, all callbacks are listed in enum: PhotonNetworkingMessage");
+
+        var roomProperties = PhotonNetwork.room.CustomProperties;
+
+        if(roomProperties.ContainsKey(roundStartedKeyString) == false)
+        {
+            roomProperties.Add(roundStartedKeyString, false);
+        }
+
+        if (roomProperties.ContainsKey(newGameKeyString) == false)
+        {
+            roomProperties.Add(newGameKeyString, PhotonNetwork.time + WaitTime);
+        }
+        PhotonNetwork.room.SetCustomProperties(roomProperties);
+        timeRemainingTillStart = (double)roomProperties[newGameKeyString] - PhotonNetwork.time;
+    }
+
+    public void StartRound()
+    {
+        var roomProperties = PhotonNetwork.room.CustomProperties;
+
+        UnityEngine.Random.InitState(Convert.ToInt32((double)roomProperties[newGameKeyString]));
+        var IAmBATMAN = PhotonNetwork.playerList[UnityEngine.Random.Range(0, PhotonNetwork.room.PlayerCount)].ID == PhotonNetwork.player.ID;
+        
+         
+        roomProperties[newGameKeyString] = PhotonNetwork.time + WaitTime + RoundTimeSpan;
+        roomProperties[roundStartedKeyString] =  true;
+        PhotonNetwork.room.SetCustomProperties(roomProperties);
+        
+        timeRemainingTillStart = (double)roomProperties[newGameKeyString] - PhotonNetwork.time;
+        CBUG.Do("Next Game Start time time is in: " + timeRemainingTillStart);
+
+        if (IAmBATMAN)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlaneControls>().Batify();
+        }
     }
 }

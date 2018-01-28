@@ -80,7 +80,6 @@ public class PlaneControls : Photon.MonoBehaviour {
             tag = "Player";
             myCam = Instantiate(CameraToSpawn) as GameObject;
         }
-        CBUG.Do("My tag is: " + tag);
 
         isFlapping = true;
 
@@ -91,9 +90,16 @@ public class PlaneControls : Photon.MonoBehaviour {
         moveStop = false;
 
         isMoth = name.Contains("Moth");
-        CBUG.Do("I am a " + (isMoth ? "Moth!" : "Bat!"));
+        //CBUG.Do("I am a " + (isMoth ? "Moth!" : "Bat!"));
 
         myOutlines = this.GetComponentsInChildren<cakeslice.Outline>();
+
+
+        if(isMoth)
+        {
+            HideMyOutline();
+        }
+
     }
 
     // Update is called once per frame
@@ -153,12 +159,12 @@ public class PlaneControls : Photon.MonoBehaviour {
 
         if(Input.GetAxis("Stop") > 0 && isMoth && moveStop == false)
         {
-            CBUG.Do("Stopping!");
+            //CBUG.Do("Stopping!");
             moveStop = true;
             m_Animator.SetBool("Stop", moveStop);
         } else if (Input.GetAxis("Stop") == 0 && moveStop == true )
         {
-            CBUG.Do("Resuming Moving!");
+            //CBUG.Do("Resuming Moving!");
             moveStop = false;
             m_Animator.SetBool("Stop", moveStop);
         }
@@ -168,6 +174,18 @@ public class PlaneControls : Photon.MonoBehaviour {
             Chirp();
             chirpTime = Time.time;
         }
+
+        if(isMoth && Input.GetAxis("Batify") > 0)
+        {
+        }
+
+    }
+
+    public void Batify()
+    {
+
+        PhotonNetwork.Destroy(gameObject);
+        GameObject newPlayerObject = PhotonNetwork.Instantiate("Bat", transform.position, transform.rotation, 0);
 
     }
 
@@ -244,14 +262,20 @@ public class PlaneControls : Photon.MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        CBUG.Do("Trigger tag Name Other:" + other.tag + " I am: " + tag);
-        CBUG.Do("Trigger obj Name Other:" + other.name + " I am: " + name);
+        //CBUG.Do("Trigger tag Name Other:" + other.tag + " I am: " + tag);
+        //CBUG.Do("Trigger obj Name Other:" + other.name + " I am: " + name);
+
+        if (isMoth && other.name == "EatTrigger")
+        {
+            CBUG.Do("BATIFY THE PLAYER!!");
+            Batify();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        CBUG.Do("Collider tag Name Other:" + collision.gameObject.tag + " I am!~ " + tag);
-        CBUG.Do("Collider obj Name Other:" + collision.gameObject.name + " I am!~ " + name);
+        //CBUG.Do("Collider tag Name Other:" + collision.gameObject.tag + " I am!~ " + tag);
+        //CBUG.Do("Collider obj Name Other:" + collision.gameObject.name + " I am!~ " + name);
     }
 
     private void Chirp ()

@@ -600,7 +600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  eraseRenderer: 0
+  eraseRenderer: 1
   originalLayer: 0
   originalMaterials: []
 --- !u!114 &114028545229886668
@@ -615,7 +615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  eraseRenderer: 0
+  eraseRenderer: 1
   originalLayer: 0
   originalMaterials: []
 --- !u!114 &114185726095439202
@@ -630,7 +630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  eraseRenderer: 0
+  eraseRenderer: 1
   originalLayer: 0
   originalMaterials: []
 --- !u!114 &114187273187386444
@@ -736,7 +736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  eraseRenderer: 0
+  eraseRenderer: 1
   originalLayer: 0
   originalMaterials: []
 --- !u!114 &114395012413394656
@@ -751,7 +751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  eraseRenderer: 0
+  eraseRenderer: 1
   originalLayer: 0
   originalMaterials: []
 --- !u!114 &114579245389320888
@@ -776,6 +776,11 @@ MonoBehaviour:
   MovSpeedY: 10
   MovSpeedZ: 6
   CameraToSpawn: {fileID: 100004, guid: baec086904791744185aaa07a6cf55c2, type: 2}
+  EchoDelayModifier: 0.01
+  ChirpCooldown: 5
+  EchoOutlineTimeSpan: 0.5
+  ReturnEchoDelay: 1
+  isTest: 0
 --- !u!114 &114707623091536522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -788,7 +793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  eraseRenderer: 0
+  eraseRenderer: 1
   originalLayer: 0
   originalMaterials: []
 --- !u!114 &114960071182053212
@@ -803,7 +808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  eraseRenderer: 0
+  eraseRenderer: 1
   originalLayer: 0
   originalMaterials: []
 --- !u!136 &136256995445246400
