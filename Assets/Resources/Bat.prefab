@@ -1059,8 +1059,8 @@ MonoBehaviour:
   RotSpeedY: 1
   MovSpeedX: 15
   MovSpeedY: 10
-  MovSpeedZ: 4
-  CameraToSpawn: {fileID: 100004, guid: baec086904791744185aaa07a6cf55c2, type: 2}
+  MovSpeedZ: 7
+  CameraToSpawn: {fileID: 100004, guid: 5a115104a72999d49921a3bbab6cd4e3, type: 2}
 --- !u!136 &136256995445246400
 CapsuleCollider:
   m_ObjectHideFlags: 1

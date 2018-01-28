@@ -23,6 +23,7 @@ namespace UnityStandardAssets.Cameras
         private float m_TurnSpeedVelocityChange; // The change in the turn speed velocity
         private Vector3 m_RollUp = Vector3.up;// The roll of the camera around the z axis ( generally this will always just be up )
 
+
         
         protected override void FollowTarget(float deltaTime)
         {

@@ -132,12 +132,16 @@ public class PlaneControls : MonoBehaviour {
             moveDown = false;
         }
 
-        if(Input.GetAxis("Stop") > 0)
+        if(Input.GetAxis("Stop") > 0 && isMoth && moveStop == false)
         {
+            CBUG.Do("Stopping!");
             moveStop = true;
-        } else
+            m_Animator.SetBool("Stop", moveStop);
+        } else if (Input.GetAxis("Stop") == 0 && moveStop == true )
         {
+            CBUG.Do("Resuming Moving!");
             moveStop = false;
+            m_Animator.SetBool("Stop", moveStop);
         }
 
     }
@@ -193,8 +197,14 @@ public class PlaneControls : MonoBehaviour {
             if (currentRot.x < 0f)
                 currentRot += rotSpeedXVec;
         }
+        if (moveStop)
+        {
+            r.isKinematic = true;
+            r.isKinematic = false;
+            currentSpd = Vector3.zero;
+        }
+
         r.rotation = Quaternion.Euler(currentRot);
-        currentSpd = moveStop ? Vector3.zero : currentSpd;
         r.velocity = currentSpd;
     }
 
