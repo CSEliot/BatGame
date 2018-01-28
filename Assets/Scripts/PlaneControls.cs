@@ -44,16 +44,21 @@ public class PlaneControls : Photon.MonoBehaviour {
 
     private bool isMoth;
 
-    private List<GameObject> otherPlayers;
-    public float EchoDelayModifier = 0.1f;
-
     private cakeslice.Outline[] myOutlines;
 
+    private List<GameObject> otherPlayersToEcho;
+    public float EchoDelayModifier = 0.01f;
+    public float ChirpCooldown =5f;
+    private float chirpTime = 0f;
+    public float EchoOutlineTimeSpan = 0.1f;
+    public float ReturnEchoDelay = 1f;
+
+    public bool isTest = false;
 
     // Use this for initialization
     void Start () {
 
-        otherPlayers = new List<GameObject>();
+        otherPlayersToEcho = new List<GameObject>();
 
         r = GetComponent<Rigidbody>();
         m_PhotonView = GetComponent<PhotonView>();
@@ -93,6 +98,9 @@ public class PlaneControls : Photon.MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+
+        if (isTest)
+            return;
 
         if(isFlapping && (   
             Mathf.Abs(currentRot.x) < MinimumHoverRotSpeedX ||
@@ -155,12 +163,21 @@ public class PlaneControls : Photon.MonoBehaviour {
             m_Animator.SetBool("Stop", moveStop);
         }
 
+        if (Input.GetAxis("Chirp") > 0 && !isMoth  && Time.time - chirpTime > ChirpCooldown)
+        {
+            Chirp();
+            chirpTime = Time.time;
+        }
+
     }
 
     private void FixedUpdate()
     {
 
         if (m_PhotonView.isMine != true)
+            return;
+
+        if (isTest)
             return;
 
         currentSpd = transform.forward * MovSpeedZ;
@@ -227,30 +244,30 @@ public class PlaneControls : Photon.MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        CBUG.Do("Trigger tag Name:" + other.tag + " from " + name);
-        CBUG.Do("Trigger obj Name:" + other.name + " from " + name);
+        CBUG.Do("Trigger tag Name Other:" + other.tag + " I am: " + tag);
+        CBUG.Do("Trigger obj Name Other:" + other.name + " I am: " + name);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        CBUG.Do("Collider tag Name:" + collision.gameObject.tag + " from " + name);
-        CBUG.Do("Collider obj Name:" + collision.gameObject.name + " from " + name);
+        CBUG.Do("Collider tag Name Other:" + collision.gameObject.tag + " I am!~ " + tag);
+        CBUG.Do("Collider obj Name Other:" + collision.gameObject.name + " I am!~ " + name);
     }
 
-    private void Screech ()
+    private void Chirp ()
     {
         GameObject[] netPlayers = GameObject.FindGameObjectsWithTag("NetPlayer");
-        otherPlayers = new List<GameObject>(netPlayers);
-        foreach (GameObject player in otherPlayers)
+        otherPlayersToEcho = new List<GameObject>(netPlayers);
+        foreach (GameObject player in otherPlayersToEcho)
         {
-            float distance = Mathf.Abs((player.transform.position - transform.position).sqrMagnitude);
+            float distance = Mathf.Abs((player.transform.position - transform.position).magnitude);
             Tools.DelayFunction(player.GetComponent<PlaneControls>().ShowMyOutline, distance * EchoDelayModifier);
         }
 
-        foreach (GameObject player in otherPlayers)
+        foreach (GameObject player in otherPlayersToEcho)
         {
-            float distance = Mathf.Abs((player.transform.position - transform.position).sqrMagnitude);
-            Tools.DelayFunction(player.GetComponent<PlaneControls>().ShowMyOutline, (distance * EchoDelayModifier) + (distance / EchoDelayModifier));
+            float distance = Mathf.Abs((player.transform.position - transform.position).magnitude);
+            Tools.DelayFunction(player.GetComponent<PlaneControls>().ShowMyOutline, (ReturnEchoDelay / distance) * EchoDelayModifier);
         }
     }
 
@@ -260,7 +277,7 @@ public class PlaneControls : Photon.MonoBehaviour {
         {
             line.eraseRenderer = false;
         }
-        Tools.DelayFunction(HideMyOutline, 0.2f);
+        Tools.DelayFunction(HideMyOutline, EchoOutlineTimeSpan);
     }
 
     private void HideMyOutline()

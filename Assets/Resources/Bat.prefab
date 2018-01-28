@@ -1061,6 +1061,11 @@ MonoBehaviour:
   MovSpeedY: 10
   MovSpeedZ: 7
   CameraToSpawn: {fileID: 100004, guid: 5a115104a72999d49921a3bbab6cd4e3, type: 2}
+  EchoDelayModifier: 0.01
+  ChirpCooldown: 5
+  EchoOutlineTimeSpan: 0.4
+  ReturnEchoDelay: 1000
+  isTest: 0
 --- !u!136 &136256995445246400
 CapsuleCollider:
   m_ObjectHideFlags: 1
