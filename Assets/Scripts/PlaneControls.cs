@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlaneControls : MonoBehaviour {
+public class PlaneControls : Photon.MonoBehaviour {
 
     private Rigidbody r;
 
@@ -44,8 +44,17 @@ public class PlaneControls : MonoBehaviour {
 
     private bool isMoth;
 
+    private List<GameObject> otherPlayers;
+    public float EchoDelayModifier = 0.1f;
+
+    private cakeslice.Outline[] myOutlines;
+
+
     // Use this for initialization
     void Start () {
+
+        otherPlayers = new List<GameObject>();
+
         r = GetComponent<Rigidbody>();
         m_PhotonView = GetComponent<PhotonView>();
         m_TransformView = GetComponent<PhotonTransformView>();
@@ -78,6 +87,8 @@ public class PlaneControls : MonoBehaviour {
 
         isMoth = name.Contains("Moth");
         CBUG.Do("I am a " + (isMoth ? "Moth!" : "Bat!"));
+
+        myOutlines = this.GetComponentsInChildren<cakeslice.Outline>();
     }
 
     // Update is called once per frame
@@ -224,5 +235,39 @@ public class PlaneControls : MonoBehaviour {
     {
         CBUG.Do("Collider tag Name:" + collision.gameObject.tag + " from " + name);
         CBUG.Do("Collider obj Name:" + collision.gameObject.name + " from " + name);
+    }
+
+    private void Screech ()
+    {
+        GameObject[] netPlayers = GameObject.FindGameObjectsWithTag("NetPlayer");
+        otherPlayers = new List<GameObject>(netPlayers);
+        foreach (GameObject player in otherPlayers)
+        {
+            float distance = Mathf.Abs((player.transform.position - transform.position).sqrMagnitude);
+            Tools.DelayFunction(player.GetComponent<PlaneControls>().ShowMyOutline, distance * EchoDelayModifier);
+        }
+
+        foreach (GameObject player in otherPlayers)
+        {
+            float distance = Mathf.Abs((player.transform.position - transform.position).sqrMagnitude);
+            Tools.DelayFunction(player.GetComponent<PlaneControls>().ShowMyOutline, (distance * EchoDelayModifier) + (distance / EchoDelayModifier));
+        }
+    }
+
+    private void ShowMyOutline()
+    {
+        foreach (cakeslice.Outline line in myOutlines)
+        {
+            line.eraseRenderer = false;
+        }
+        Tools.DelayFunction(HideMyOutline, 0.2f);
+    }
+
+    private void HideMyOutline()
+    {
+        foreach (cakeslice.Outline line in myOutlines)
+        {
+            line.eraseRenderer = true;
+        }
     }
 }
