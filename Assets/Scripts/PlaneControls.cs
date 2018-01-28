@@ -36,6 +36,14 @@ public class PlaneControls : MonoBehaviour {
     public GameObject CameraToSpawn;
     private GameObject myCam;
 
+    private bool moveRight;
+    private bool moveLeft;
+    private bool moveUp;
+    private bool moveDown;
+    private bool moveStop;
+
+    private bool isMoth;
+
     // Use this for initialization
     void Start () {
         r = GetComponent<Rigidbody>();
@@ -61,6 +69,15 @@ public class PlaneControls : MonoBehaviour {
         CBUG.Do("My tag is: " + tag);
 
         isFlapping = true;
+
+        moveRight = false;
+        moveLeft = false;
+        moveUp = false;
+        moveDown = false;
+        moveStop = false;
+
+        isMoth = name.Contains("Moth");
+        CBUG.Do("I am a " + (isMoth ? "Moth!" : "Bat!"));
     }
 
     // Update is called once per frame
@@ -84,6 +101,45 @@ public class PlaneControls : MonoBehaviour {
         if (m_PhotonView.isMine != true)
             return;
 
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            moveRight = true;
+            moveLeft = false;
+        }
+        else if (Input.GetAxis("Horizontal") < 0)
+        {
+            moveRight = false;
+            moveLeft = true;
+        }
+        else
+        {
+            moveRight = false;
+            moveLeft = false;
+        }
+        if (Input.GetAxis("Vertical") > 0)
+        {
+            moveUp = true;
+            moveDown = false;
+        }
+        else if (Input.GetAxis("Vertical") < 0)
+        {
+            moveUp = false;
+            moveDown = true;
+        }
+        else
+        {
+            moveUp = false;
+            moveDown = false;
+        }
+
+        if(Input.GetAxis("Stop") > 0)
+        {
+            moveStop = true;
+        } else
+        {
+            moveStop = false;
+        }
+
     }
 
     private void FixedUpdate()
@@ -93,7 +149,7 @@ public class PlaneControls : MonoBehaviour {
             return;
 
         currentSpd = transform.forward * MovSpeedZ;
-        if(Input.GetAxis("Horizontal") > 0)
+        if(moveRight)
         {
             if (currentRot.z >= -TargetRotZ)
             {
@@ -101,7 +157,7 @@ public class PlaneControls : MonoBehaviour {
             }
             currentRot += new Vector3(0f, RotSpeedY, 0f);
         }
-        else if (Input.GetAxis("Horizontal") < 0)
+        else if (moveLeft)
         {
             if (currentRot.z <= TargetRotZ)
                 currentRot += rotSpeedZVec;
@@ -120,12 +176,12 @@ public class PlaneControls : MonoBehaviour {
                 currentRot += new Vector3(0f, RotSpeedY, 0f);
             }
         }
-        if (Input.GetAxis("Vertical") > 0)
+        if (moveUp)
         {
             if (currentRot.x >= -TargetRotX)
                 currentRot -= rotSpeedXVec;
         }
-        else if (Input.GetAxis("Vertical") < 0)
+        else if (moveDown)
         {
             if (currentRot.x <= TargetRotX)
                 currentRot += rotSpeedXVec;
@@ -138,6 +194,7 @@ public class PlaneControls : MonoBehaviour {
                 currentRot += rotSpeedXVec;
         }
         r.rotation = Quaternion.Euler(currentRot);
+        currentSpd = moveStop ? Vector3.zero : currentSpd;
         r.velocity = currentSpd;
     }
 

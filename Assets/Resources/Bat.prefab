@@ -342,6 +342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4941337270966338}
   - component: {fileID: 137006689709625498}
+  - component: {fileID: 114428406831683508}
   m_Layer: 0
   m_Name: Bat_v10
   m_TagString: Untagged
@@ -602,7 +603,7 @@ Transform:
   m_GameObject: {fileID: 1328510495539628}
   m_LocalRotation: {x: -0.00028226463, y: -0.0000010077497, z: 0.0174526, w: 0.99984765}
   m_LocalPosition: {x: 20.19996, y: 5.522291, z: 19.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_Children:
   - {fileID: 4666618583814038}
   - {fileID: 4385102707494644}
@@ -1023,6 +1024,21 @@ MonoBehaviour:
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
+--- !u!114 &114428406831683508
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1702315920884434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!114 &114579245389320888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1072,7 +1088,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: cbf22ac9b35166a41a503e16565349ab, type: 3}
+  - {fileID: 2100000, guid: 3fc6632b31e956145be5e915558eb4d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
