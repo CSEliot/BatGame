@@ -35,20 +35,20 @@ public class MusicManager : MonoBehaviour
 
     public void SwitchSong(int SongNum)
     {
-        CBUG.Do("Switch");
+        //CBUG.Do("Switch");
         if (isSwitching || currentSongNum == SongNum)
         {
             nextSongNum = SongNum;
             return;
         }
 
-        CBUG.Do("Switch");
+        //CBUG.Do("Switch");
         currentSongNum = SongNum;
         isSwitching = true;
         nextSongNum = -1;
         if (musicBox1IsActive)
         {
-            CBUG.Do("Fading out 1");
+            //CBUG.Do("Fading out 1");
             musicBox1IsActive = false;
             fadeLength = TransitionLength[SongNum];
             //MusicBox1.time = TransitionPos[SongNum];
@@ -60,7 +60,7 @@ public class MusicManager : MonoBehaviour
         }
         else
         {
-            CBUG.Do("Fading out 2");
+            //CBUG.Do("Fading out 2");
             musicBox1IsActive = true;
             fadeLength = TransitionLength[SongNum];
             //MusicBox2.time = TransitionPos[SongNum];
@@ -79,7 +79,7 @@ public class MusicManager : MonoBehaviour
         if (from < to)
             lerpUp = true;
 
-        CBUG.Do("Lerping 1");
+        //CBUG.Do("Lerping 1");
 
         float startTime = Time.time;
         if (lerpUp)
@@ -94,7 +94,7 @@ public class MusicManager : MonoBehaviour
         }
         else
         {
-            CBUG.Do("LERP DOWN");
+            //CBUG.Do("LERP DOWN");
             while (MusicBox1.volume >= to + 0.01f)
             {
                 MusicBox1.volume = Mathf.Lerp(from, to, (Time.time - startTime) / fadeLength);
@@ -104,7 +104,7 @@ public class MusicManager : MonoBehaviour
         }
 
         isSwitching = false;
-        CBUG.Do("IsSwitching IS OFF in 1");
+        //CBUG.Do("IsSwitching IS OFF in 1");
         //Only on LerpVolume1 ...??
         if (nextSongNum != -1)
         {
@@ -119,12 +119,12 @@ public class MusicManager : MonoBehaviour
         if (from < to)
             lerpUp = true;
 
-        CBUG.Do("Lerping 2");
+        //CBUG.Do("Lerping 2");
 
         float startTime = Time.time;
         if (lerpUp)
         {
-            CBUG.Do("LERP UP");
+            //CBUG.Do("LERP UP");
             while (MusicBox2.volume <= to - 0.01f)
             {
                 MusicBox2.volume = Mathf.Lerp(from, to, (Time.time - startTime) / fadeLength);
@@ -134,8 +134,8 @@ public class MusicManager : MonoBehaviour
         }
         else
         {
-            CBUG.Do("LERP DOWN");
-            CBUG.Do("Playing down to " + to + " and currentVol for 2 is: " + MusicBox2.volume);
+            //CBUG.Do("LERP DOWN");
+            //CBUG.Do("Playing down to " + to + " and currentVol for 2 is: " + MusicBox2.volume);
             while (MusicBox2.volume >= to + 0.01f)
             {
                 MusicBox2.volume = Mathf.Lerp(from, to, (Time.time - startTime) / fadeLength);
@@ -145,7 +145,7 @@ public class MusicManager : MonoBehaviour
         }
 
         isSwitching = false;
-        CBUG.Do("IsSwitching IS OFF in 2");
+        //CBUG.Do("IsSwitching IS OFF in 2");
         //NOT Only on LerpVolume1 ...??
         if (nextSongNum != -1)
         {

@@ -37,4 +37,5 @@ MonoBehaviour:
   - RequestForPickupItems
   - RequestForPickupTimes
   - KillSelf
+  - Batify
   DisableAutoOpenWizard: 1

@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 54039091136566032}
   - component: {fileID: 114579245389320888}
   - component: {fileID: 136256995445246400}
+  - component: {fileID: 65969081155597424}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Player
@@ -312,22 +313,6 @@ GameObject:
   - component: {fileID: 4086603624425798}
   m_Layer: 0
   m_Name: L_WingClose_Jnt
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1650856390860582
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4385102707494644}
-  - component: {fileID: 65815198050483738}
-  m_Layer: 0
-  m_Name: EatTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -606,23 +591,9 @@ Transform:
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_Children:
   - {fileID: 4666618583814038}
-  - {fileID: 4385102707494644}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -0.032, y: -0.001, z: 2}
---- !u!4 &4385102707494644
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1650856390860582}
-  m_LocalRotation: {x: 0.0000000018239916, y: 0.7071069, z: 0.70710677, w: -2.1753976e-10}
-  m_LocalPosition: {x: 0, y: 0, z: 8.015}
-  m_LocalScale: {x: 1, y: 13.8730345, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4367287161756848}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4390269416832136
 Transform:
   m_ObjectHideFlags: 1
@@ -904,18 +875,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65815198050483738
+--- !u!65 &65969081155597424
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1650856390860582}
+  m_GameObject: {fileID: 1328510495539628}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.5585941, y: 0.81352806, z: 1.5711135}
+  m_Center: {x: 0.041285582, y: 0.056764055, z: 1.100558}
 --- !u!95 &95320019526736704
 Animator:
   serializedVersion: 3

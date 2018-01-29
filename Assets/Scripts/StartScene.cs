@@ -20,7 +20,7 @@ public class StartScene : MonoBehaviour {
     public void StartGame()
     {
         instructionals.SetActive(true);
-        Tools.DelayFunction(LoadGamz, 30.00f);
+        Tools.DelayFunction(LoadGamz, 25.00f);
         MusicManager._SwitchTo(1);
     }
     

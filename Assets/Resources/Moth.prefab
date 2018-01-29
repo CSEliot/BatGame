@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 54039091136566032}
   - component: {fileID: 114579245389320888}
   - component: {fileID: 136256995445246400}
+  - component: {fileID: 65441630511075142}
   m_Layer: 0
   m_Name: Moth
   m_TagString: Player
@@ -283,7 +284,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100002, guid: 7be369fb984d6514da1a25ca425cb92a, type: 3}
+  - {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -317,7 +318,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100002, guid: 7be369fb984d6514da1a25ca425cb92a, type: 3}
+  - {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -351,7 +352,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7be369fb984d6514da1a25ca425cb92a, type: 3}
+  - {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -385,7 +386,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100002, guid: 7be369fb984d6514da1a25ca425cb92a, type: 3}
+  - {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -419,7 +420,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100002, guid: 7be369fb984d6514da1a25ca425cb92a, type: 3}
+  - {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -453,7 +454,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100002, guid: 7be369fb984d6514da1a25ca425cb92a, type: 3}
+  - {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -487,7 +488,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100002, guid: 7be369fb984d6514da1a25ca425cb92a, type: 3}
+  - {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -571,6 +572,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65441630511075142
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328510495539628}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.26, y: 0.33, z: 0.51}
+  m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!95 &95646243876379226
 Animator:
   serializedVersion: 3
@@ -583,7 +596,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 211a3ce243d65a14e81c8e028636cfde, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -600,7 +613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  eraseRenderer: 1
+  eraseRenderer: 0
   originalLayer: 0
   originalMaterials: []
 --- !u!114 &114028545229886668
@@ -615,7 +628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  eraseRenderer: 1
+  eraseRenderer: 0
   originalLayer: 0
   originalMaterials: []
 --- !u!114 &114185726095439202
@@ -630,7 +643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  eraseRenderer: 1
+  eraseRenderer: 0
   originalLayer: 0
   originalMaterials: []
 --- !u!114 &114187273187386444
@@ -736,7 +749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  eraseRenderer: 1
+  eraseRenderer: 0
   originalLayer: 0
   originalMaterials: []
 --- !u!114 &114395012413394656
@@ -751,7 +764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  eraseRenderer: 1
+  eraseRenderer: 0
   originalLayer: 0
   originalMaterials: []
 --- !u!114 &114579245389320888
@@ -793,7 +806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  eraseRenderer: 1
+  eraseRenderer: 0
   originalLayer: 0
   originalMaterials: []
 --- !u!114 &114960071182053212
@@ -808,7 +821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
-  eraseRenderer: 1
+  eraseRenderer: 0
   originalLayer: 0
   originalMaterials: []
 --- !u!136 &136256995445246400

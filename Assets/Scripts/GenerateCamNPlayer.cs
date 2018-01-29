@@ -8,7 +8,7 @@ public class GenerateCamNPlayer : Photon.MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Debug.LogWarning("whoa!!");
+        //Debug.LogWarning("whoa!!");
 	}
 	
 	// Update is called once per frame

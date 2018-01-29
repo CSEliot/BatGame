@@ -1,7 +1,8 @@
 using System;
 using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 /// <summary>
 /// This script automatically connects to Photon (using the settings file),
 /// tries to join a random room and creates one if none was found (which is ok).
@@ -20,21 +21,20 @@ public class ConnectGameAndJoin : Photon.MonoBehaviour
     private double oneSecond = 1f;
     private double previousTimeCheck;
             
-    private double WaitTime = 5f;
-    private double timeRemainingTillStart;
+    private double WaitTime = 60f;
+    private double countdownTimeSpan;
 
     private double RoundTimeSpan = 180f;
 
     string newGameKeyString = "NewGameStartTime";
     string roundStartedKeyString = "RoundStarted";
 
-    private bool roundStarted = false;
-
     public virtual void Start()
     {
-        timeRemainingTillStart = 60f;
+        countdownTimeSpan = 60f;
         Debug.Log("Game start!");
         PhotonNetwork.autoJoinLobby = false;    // we join randomly. always. no need to join a lobby to get the list of rooms.
+        CBUG.Do("" + PhotonNetwork.sendRate);
         PhotonNetwork.sendRate = 21;
         PhotonNetwork.sendRateOnSerialize = 21;
 
@@ -52,12 +52,42 @@ public class ConnectGameAndJoin : Photon.MonoBehaviour
 
         if(Time.time - previousTimeCheck > oneSecond)
         {
-            CBUG.Do("Time Remaining: " + timeRemainingTillStart);
-            timeRemainingTillStart--;
-            previousTimeCheck = Time.time;
-            if(timeRemainingTillStart < 0)
+            //CBUG.Do("Time Remaining: " + timeRemainingTillStart);
+            if (PhotonNetwork.room == null)
+                return;
+
+            var roomProperties = PhotonNetwork.room.CustomProperties;
+            if (roomProperties.ContainsKey(roundStartedKeyString) && (bool)roomProperties[roundStartedKeyString])
             {
-                StartRound();
+                GameObject.Find("TimeRemainingBGUI").GetComponent<Image>().enabled = true;
+                GameObject.Find("TimeRemainingUI").GetComponent<Text>().text = "" + countdownTimeSpan;
+                GameObject.Find("RoundStartsInUI").GetComponent<Text>().text = "";
+                if (GameObject.Find("Moth (Clone)") == null)
+                {
+                    //Bats Win!
+                    GameObject.Find("BatsWinSplashUI").GetComponent<Image>().enabled = true;
+                    Tools.DelayFunction(RestartGame, 12f);
+                }
+            }
+            else {
+                GameObject.Find("TimeRemainingBGUI").GetComponent<Image>().enabled = false;
+                GameObject.Find("TimeRemainingUI").GetComponent<Text>().text = "";
+                GameObject.Find("RoundStartsInUI").GetComponent<Text>().text = "Round Starts In: " + countdownTimeSpan;
+            }
+            countdownTimeSpan--;
+            previousTimeCheck = Time.time;
+            if(countdownTimeSpan <= 0)
+            {
+                if (roomProperties.ContainsKey(roundStartedKeyString) && (bool)roomProperties[roundStartedKeyString])
+                {
+                    // Snacks win!
+                    GameObject.Find("SnacksWinSplashUI").GetComponent<Image>().enabled = true;
+                    Tools.DelayFunction(RestartGame, 12f);
+                }
+                else
+                {
+                    StartRound();
+                }
             }
         }
     }
@@ -108,7 +138,7 @@ public class ConnectGameAndJoin : Photon.MonoBehaviour
             roomProperties.Add(newGameKeyString, PhotonNetwork.time + WaitTime);
         }
         PhotonNetwork.room.SetCustomProperties(roomProperties);
-        timeRemainingTillStart = (double)roomProperties[newGameKeyString] - PhotonNetwork.time;
+        countdownTimeSpan = (double)roomProperties[newGameKeyString] - PhotonNetwork.time;
     }
 
     public void StartRound()
@@ -118,17 +148,24 @@ public class ConnectGameAndJoin : Photon.MonoBehaviour
         UnityEngine.Random.InitState(Convert.ToInt32((double)roomProperties[newGameKeyString]));
         var IAmBATMAN = PhotonNetwork.playerList[UnityEngine.Random.Range(0, PhotonNetwork.room.PlayerCount)].ID == PhotonNetwork.player.ID;
         
-         
+        //todo MAKE A LIST OF ALL ACTOR IDs -- actor IDs are unique but not perfect. get a list of all actor ids in the room, then work over that.
         roomProperties[newGameKeyString] = PhotonNetwork.time + WaitTime + RoundTimeSpan;
         roomProperties[roundStartedKeyString] =  true;
         PhotonNetwork.room.SetCustomProperties(roomProperties);
         
-        timeRemainingTillStart = (double)roomProperties[newGameKeyString] - PhotonNetwork.time;
-        CBUG.Do("Next Game Start time time is in: " + timeRemainingTillStart);
+        countdownTimeSpan = (double)roomProperties[newGameKeyString] - PhotonNetwork.time;
+        //CBUG.Do("Next Game Start time time is in: " + timeRemainingTillStart);
 
-        if (IAmBATMAN)
+        //todo Only owner of room can be bat, this bad!
+        if (PhotonNetwork.isMasterClient)
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlaneControls>().Batify();
         }
+    }
+
+    public void RestartGame()
+    {
+        //todo MAYBE this works?
+        PhotonNetwork.ReJoinRoom(PhotonNetwork.room.Name);
     }
 }

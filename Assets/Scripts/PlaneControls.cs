@@ -98,6 +98,13 @@ public class PlaneControls : Photon.MonoBehaviour {
         if(isMoth)
         {
             HideMyOutline();
+            GameObject.Find("BatUI").GetComponent<Image>().enabled = false;
+            GameObject.Find("SnackUI").GetComponent<Image>().enabled = true;
+        }
+        else
+        {
+            GameObject.Find("BatUI").GetComponent<Image>().enabled = true;
+            GameObject.Find("SnackUI").GetComponent<Image>().enabled = false;
         }
 
     }
@@ -177,10 +184,12 @@ public class PlaneControls : Photon.MonoBehaviour {
 
         if(isMoth && Input.GetAxis("Batify") > 0)
         {
+            Batify();
         }
 
     }
 
+    [PunRPC]
     public void Batify()
     {
 
@@ -263,10 +272,11 @@ public class PlaneControls : Photon.MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         //CBUG.Do("Trigger tag Name Other:" + other.tag + " I am: " + tag);
-        //CBUG.Do("Trigger obj Name Other:" + other.name + " I am: " + name);
+        CBUG.Do("Trigger obj Name Other:" + other.name + " I am: " + name);
 
-        if (isMoth && other.name == "EatTrigger")
+        if (isMoth && other.name.Contains("Bat") || other.name.Contains("Eat"))
         {
+            isMoth = false;
             CBUG.Do("BATIFY THE PLAYER!!");
             Batify();
         }
