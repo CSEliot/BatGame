@@ -55,6 +55,13 @@ public class PlaneControls : Photon.MonoBehaviour {
 
     public bool isTest = false;
 
+
+    string time_currentGameEndsIn_keyString = "time_currentGameEndsIn";
+    string time_nextGameStartsIn_keyString = "time_nextGameStartsIn";
+    string roundStarted_keyString = "RoundStarted";
+
+    private float timeSpan_batMothCooldown = 3f;
+    private float lastBatMothChange;
     // Use this for initialization
     void Start () {
 
@@ -94,19 +101,28 @@ public class PlaneControls : Photon.MonoBehaviour {
 
         myOutlines = this.GetComponentsInChildren<cakeslice.Outline>();
 
-
-        if(isMoth)
+        if (isMoth)
         {
             HideMyOutline();
-            GameObject.Find("BatUI").GetComponent<Image>().enabled = false;
-            GameObject.Find("SnackUI").GetComponent<Image>().enabled = true;
-        }
-        else
-        {
-            GameObject.Find("BatUI").GetComponent<Image>().enabled = true;
-            GameObject.Find("SnackUI").GetComponent<Image>().enabled = false;
         }
 
+        if (m_PhotonView.isMine)
+        {
+            if(isMoth)
+            {
+                GameObject.Find("BatUI").GetComponent<Image>().enabled = false;
+                GameObject.Find("SnackUI").GetComponent<Image>().enabled = true;
+                CBUG.Do("IsMoth!");
+            }
+            else
+            {
+                GameObject.Find("BatUI").GetComponent<Image>().enabled = true;
+                GameObject.Find("SnackUI").GetComponent<Image>().enabled = false;
+                CBUG.Do("IsBat!");
+            }
+        }
+
+        lastBatMothChange = Time.time;
     }
 
     // Update is called once per frame
@@ -182,9 +198,27 @@ public class PlaneControls : Photon.MonoBehaviour {
             chirpTime = Time.time;
         }
 
-        if(isMoth && Input.GetAxis("Batify") > 0)
+
+        if(isMoth && Input.GetButtonDown("Batify") && Time.time - lastBatMothChange > timeSpan_batMothCooldown)
         {
-            Batify();
+            var roomProperties = PhotonNetwork.room.CustomProperties;
+            //if round started
+            if (roomProperties.ContainsKey(roundStarted_keyString) && (bool)roomProperties[roundStarted_keyString] == false)
+            {
+                lastBatMothChange = Time.time;
+                Batify();
+            }
+        }
+
+        if (isMoth == false && Input.GetButtonDown("Mothify") && Time.time - lastBatMothChange > timeSpan_batMothCooldown)
+        {
+            var roomProperties = PhotonNetwork.room.CustomProperties;
+            //if round started
+            if (roomProperties.ContainsKey(roundStarted_keyString) && (bool)roomProperties[roundStarted_keyString] == false)
+            {
+                lastBatMothChange = Time.time;
+                Mothify();
+            }
         }
 
     }
@@ -192,10 +226,23 @@ public class PlaneControls : Photon.MonoBehaviour {
     [PunRPC]
     public void Batify()
     {
+        if (m_PhotonView.isMine)
+        {
+            Destroy(myCam);
+            PhotonNetwork.Destroy(gameObject);
+            GameObject newPlayerObject = PhotonNetwork.Instantiate("Bat", transform.position, transform.rotation, 0);
+        }
+    }
 
-        PhotonNetwork.Destroy(gameObject);
-        GameObject newPlayerObject = PhotonNetwork.Instantiate("Bat", transform.position, transform.rotation, 0);
-
+    [PunRPC]
+    public void Mothify()
+    {
+        if (m_PhotonView.isMine)
+        {
+            Destroy(myCam);
+            PhotonNetwork.Destroy(gameObject);
+            GameObject newPlayerObject = PhotonNetwork.Instantiate("Moth", transform.position, transform.rotation, 0);
+        }
     }
 
     private void FixedUpdate()
@@ -263,21 +310,15 @@ public class PlaneControls : Photon.MonoBehaviour {
         r.velocity = currentSpd;
     }
 
-    [PunRPC]
-    void KillSelf ()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         //CBUG.Do("Trigger tag Name Other:" + other.tag + " I am: " + tag);
-        CBUG.Do("Trigger obj Name Other:" + other.name + " I am: " + name);
+        //CBUG.Do("Trigger obj Name Other:" + other.name + " I am: " + name);
 
         if (isMoth && other.name.Contains("Bat") || other.name.Contains("Eat"))
         {
             isMoth = false;
-            CBUG.Do("BATIFY THE PLAYER!!");
+            //CBUG.Do("BATIFY THE PLAYER!!");
             Batify();
         }
     }

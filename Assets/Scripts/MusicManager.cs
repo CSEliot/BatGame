@@ -79,26 +79,20 @@ public class MusicManager : MonoBehaviour
         if (from < to)
             lerpUp = true;
 
-        //CBUG.Do("Lerping 1");
-
         float startTime = Time.time;
         if (lerpUp)
         {
-            CBUG.Do("LERP UP");
             while (MusicBox1.volume <= to - 0.01f)
             {
                 MusicBox1.volume = Mathf.Lerp(from, to, (Time.time - startTime) / fadeLength);
-                //CBUG.Do("Lerp in Vol1: " + MusicBox1.volume);
                 yield return null;
             }
         }
         else
         {
-            //CBUG.Do("LERP DOWN");
             while (MusicBox1.volume >= to + 0.01f)
             {
                 MusicBox1.volume = Mathf.Lerp(from, to, (Time.time - startTime) / fadeLength);
-                //CBUG.Do("Lerp in Vol1: " + MusicBox1.volume);
                 yield return null;
             }
         }
