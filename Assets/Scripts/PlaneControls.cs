@@ -62,6 +62,13 @@ public class PlaneControls : Photon.MonoBehaviour {
 
     private float timeSpan_batMothCooldown = 3f;
     private float lastBatMothChange;
+
+    public AudioClip[] BatNoises;
+    public AudioClip[] MothNoises;
+
+    public AudioSource flapSource;
+    public AudioSource pingSource;
+
     // Use this for initialization
     void Start () {
 
@@ -101,10 +108,17 @@ public class PlaneControls : Photon.MonoBehaviour {
 
         myOutlines = this.GetComponentsInChildren<cakeslice.Outline>();
 
+        flapSource.Stop();
         if (isMoth)
         {
             HideMyOutline();
+            flapSource.clip = MothNoises[0];
         }
+        else
+        {
+            flapSource.clip = BatNoises[1];
+        }
+        flapSource.Play();
 
         if (m_PhotonView.isMine)
         {
@@ -112,12 +126,14 @@ public class PlaneControls : Photon.MonoBehaviour {
             {
                 GameObject.Find("BatUI").GetComponent<Image>().enabled = false;
                 GameObject.Find("SnackUI").GetComponent<Image>().enabled = true;
+                GameObject.Find("BatSonarUI").GetComponent<Image>().enabled = false;
                 CBUG.Do("IsMoth!");
             }
             else
             {
                 GameObject.Find("BatUI").GetComponent<Image>().enabled = true;
                 GameObject.Find("SnackUI").GetComponent<Image>().enabled = false;
+                GameObject.Find("BatSonarUI").GetComponent<Image>().enabled = true;
                 CBUG.Do("IsBat!");
             }
         }
@@ -128,15 +144,13 @@ public class PlaneControls : Photon.MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        if (isTest)
-            return;
-
         if(isFlapping && (   
             Mathf.Abs(currentRot.x) < MinimumHoverRotSpeedX ||
             Mathf.Abs(currentRot.z) < MinimumHoverRotSpeedZ ) 
         ) {
             isFlapping = false;
             m_Animator.SetBool("Flap", isFlapping);
+            flapSource.Pause();
         }
         if(!isFlapping && (
             Mathf.Abs(currentRot.x) > MinimumHoverRotSpeedX ||
@@ -144,7 +158,12 @@ public class PlaneControls : Photon.MonoBehaviour {
         ) {
             isFlapping = true;
             m_Animator.SetBool("Flap", isFlapping);
+            flapSource.Play();
         }
+
+        if (isTest)
+            return;
+
 
         if (m_PhotonView.isMine != true)
             return;
@@ -185,11 +204,18 @@ public class PlaneControls : Photon.MonoBehaviour {
             //CBUG.Do("Stopping!");
             moveStop = true;
             m_Animator.SetBool("Stop", moveStop);
-        } else if (Input.GetAxis("Stop") == 0 && moveStop == true )
+        } else if (Input.GetAxis("Stop") == 0 && isMoth && moveStop == true )
         {
             //CBUG.Do("Resuming Moving!");
             moveStop = false;
             m_Animator.SetBool("Stop", moveStop);
+        }
+
+
+
+        if (!isMoth && Time.time - chirpTime > ChirpCooldown)
+        {
+            GameObject.Find("BatSonarUI").GetComponent<Image>().enabled = true;
         }
 
         if (Input.GetAxis("Chirp") > 0 && !isMoth  && Time.time - chirpTime > ChirpCooldown)
@@ -199,7 +225,7 @@ public class PlaneControls : Photon.MonoBehaviour {
         }
 
 
-        if(isMoth && Input.GetButtonDown("Batify") && Time.time - lastBatMothChange > timeSpan_batMothCooldown)
+        if((isMoth && Input.GetButtonDown("Batify") && Time.time - lastBatMothChange > timeSpan_batMothCooldown) || Input.GetKeyDown(KeyCode.N))
         {
             var roomProperties = PhotonNetwork.room.CustomProperties;
             //if round started
@@ -210,7 +236,7 @@ public class PlaneControls : Photon.MonoBehaviour {
             }
         }
 
-        if (isMoth == false && Input.GetButtonDown("Mothify") && Time.time - lastBatMothChange > timeSpan_batMothCooldown)
+        if ((isMoth == false && Input.GetButtonDown("Mothify") && Time.time - lastBatMothChange > timeSpan_batMothCooldown) || Input.GetKeyDown(KeyCode.N))
         {
             var roomProperties = PhotonNetwork.room.CustomProperties;
             //if round started
@@ -230,7 +256,8 @@ public class PlaneControls : Photon.MonoBehaviour {
         {
             Destroy(myCam);
             PhotonNetwork.Destroy(gameObject);
-            GameObject newPlayerObject = PhotonNetwork.Instantiate("Bat", transform.position, transform.rotation, 0);
+            var rotation = new Vector3(0f, transform.rotation.eulerAngles.y, 0f);
+            GameObject newPlayerObject = PhotonNetwork.Instantiate("Bat", transform.position, Quaternion.Euler(rotation), 0);
         }
     }
 
@@ -241,7 +268,8 @@ public class PlaneControls : Photon.MonoBehaviour {
         {
             Destroy(myCam);
             PhotonNetwork.Destroy(gameObject);
-            GameObject newPlayerObject = PhotonNetwork.Instantiate("Moth", transform.position, transform.rotation, 0);
+            var rotation = new Vector3(0f, transform.rotation.eulerAngles.y, 0f);
+            GameObject newPlayerObject = PhotonNetwork.Instantiate("Moth", transform.position, Quaternion.Euler(rotation), 0);
         }
     }
 
@@ -320,6 +348,7 @@ public class PlaneControls : Photon.MonoBehaviour {
             isMoth = false;
             //CBUG.Do("BATIFY THE PLAYER!!");
             Batify();
+            pingSource.PlayOneShot(BatNoises[2]);
         }
     }
 
@@ -331,6 +360,8 @@ public class PlaneControls : Photon.MonoBehaviour {
 
     private void Chirp ()
     {
+        GameObject.Find("BatSonarUI").GetComponent<Image>().enabled = false;
+        m_PhotonView.RPC("BatChirped", PhotonTargets.All);
         GameObject[] netPlayers = GameObject.FindGameObjectsWithTag("NetPlayer");
         otherPlayersToEcho = new List<GameObject>(netPlayers);
         foreach (GameObject player in otherPlayersToEcho)
@@ -339,15 +370,16 @@ public class PlaneControls : Photon.MonoBehaviour {
             Tools.DelayFunction(player.GetComponent<PlaneControls>().ShowMyOutline, distance * EchoDelayModifier);
         }
 
-        foreach (GameObject player in otherPlayersToEcho)
-        {
-            float distance = Mathf.Abs((player.transform.position - transform.position).magnitude);
-            Tools.DelayFunction(player.GetComponent<PlaneControls>().ShowMyOutline, (ReturnEchoDelay / distance) * EchoDelayModifier);
-        }
+        //foreach (GameObject player in otherPlayersToEcho)
+        //{
+        //    float distance = Mathf.Abs((player.transform.position - transform.position).magnitude);
+        //    Tools.DelayFunction(player.GetComponent<PlaneControls>().ShowMyOutline, (distance * EchoDelayModifier) + (ReturnEchoDelay / distance) * EchoDelayModifier);
+        //}
     }
 
     private void ShowMyOutline()
     {
+        pingSource.PlayOneShot(MothNoises[1]);
         foreach (cakeslice.Outline line in myOutlines)
         {
             line.eraseRenderer = false;
@@ -361,5 +393,11 @@ public class PlaneControls : Photon.MonoBehaviour {
         {
             line.eraseRenderer = true;
         }
+    }
+
+    [PunRPC]
+    private void BatChirped()
+    {
+        pingSource.PlayOneShot(BatNoises[0]);
     }
 }

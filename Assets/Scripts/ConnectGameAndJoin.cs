@@ -20,7 +20,7 @@ public class ConnectGameAndJoin : Photon.MonoBehaviour
     private double oneSecond = 1f;
     private double previousTimeCheck;
             
-    private double waitTime = 60f;
+    private double waitTime = 30f;
     private double timeSpan_Round = 180f;
 
     private float time_endOfRoundSplash = 5f;
@@ -43,7 +43,7 @@ public class ConnectGameAndJoin : Photon.MonoBehaviour
         if(Application.isEditor || Debug.isDebugBuild)
         {
             timeSpan_Round = 10f;
-            waitTime = 10f;
+            waitTime = 200f;
         }
     }
 
@@ -111,12 +111,7 @@ public class ConnectGameAndJoin : Photon.MonoBehaviour
 
     // below, we implement some callbacks of PUN
     // you can find PUN's callbacks in the class PunBehaviour or in enum PhotonNetworkingMessage
-
-    public void OnSerializeNetworkView(BitStream stream, NetworkMessageInfo info)
-    {
-        
-    }
-
+    
     public virtual void OnConnectedToMaster()
     {
         Debug.Log("OnConnectedToMaster() was called by PUN. Now this client is connected and could join a room. Calling: PhotonNetwork.JoinRandomRoom();");
@@ -204,6 +199,7 @@ public class ConnectGameAndJoin : Photon.MonoBehaviour
     {
         GameObject.Find("RoundStartsInUI").GetComponent<Text>().text = "";
         GameObject.Find("TimeRemainingBGUI").GetComponent<Image>().enabled = true;
+        GameObject.Find("PreRoundHelpUI").GetComponent<Text>().enabled = false;
     }
 
     public void EndRound(bool batsWin)
@@ -255,5 +251,6 @@ public class ConnectGameAndJoin : Photon.MonoBehaviour
         CBUG.Do("Kill splash UI");
         GameObject.Find("BatsWinSplashUI").GetComponent<Image>().enabled = false;
         GameObject.Find("SnacksWinSplashUI").GetComponent<Image>().enabled = false;
+        GameObject.Find("PreRoundHelpUI").GetComponent<Text>().enabled = true;
     }
 }

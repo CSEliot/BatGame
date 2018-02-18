@@ -19,6 +19,8 @@ public class MusicManager : MonoBehaviour
     private int currentSongNum;
     private int nextSongNum;
 
+    public float targetVolume;
+
     // Use this for initialization
     void Awake()
     {
@@ -55,8 +57,8 @@ public class MusicManager : MonoBehaviour
             MusicBox2.Stop();
             MusicBox2.clip = Songs[SongNum];
             MusicBox2.Play();
-            StartCoroutine(LerpVolume1(1f, 0.0f));
-            StartCoroutine(LerpVolume2(0f, 1.0f));
+            StartCoroutine(LerpVolume1(targetVolume, 0.0f));
+            StartCoroutine(LerpVolume2(0f, targetVolume));
         }
         else
         {
@@ -67,8 +69,8 @@ public class MusicManager : MonoBehaviour
             MusicBox1.Stop();
             MusicBox1.clip = Songs[SongNum];
             MusicBox1.Play();
-            StartCoroutine(LerpVolume1(0f, 1.0f));
-            StartCoroutine(LerpVolume2(1f, 0.0f));
+            StartCoroutine(LerpVolume1(0f, targetVolume));
+            StartCoroutine(LerpVolume2(targetVolume, 0.0f));
         }
     }
 

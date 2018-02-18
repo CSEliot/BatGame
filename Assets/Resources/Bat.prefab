@@ -146,6 +146,8 @@ GameObject:
   - component: {fileID: 114579245389320888}
   - component: {fileID: 136256995445246400}
   - component: {fileID: 65969081155597424}
+  - component: {fileID: 82992387412087072}
+  - component: {fileID: 82170657076273632}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Player
@@ -887,6 +889,166 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5585941, y: 0.81352806, z: 1.5711135}
   m_Center: {x: 0.041285582, y: 0.056764055, z: 1.100558}
+--- !u!82 &82170657076273632
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328510495539628}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 100
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &82992387412087072
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328510495539628}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.3
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 30
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95320019526736704
 Animator:
   serializedVersion: 3
@@ -1032,11 +1194,21 @@ MonoBehaviour:
   MovSpeedY: 10
   MovSpeedZ: 7
   CameraToSpawn: {fileID: 100004, guid: 5a115104a72999d49921a3bbab6cd4e3, type: 2}
-  EchoDelayModifier: 0.01
+  EchoDelayModifier: 0.03
   ChirpCooldown: 5
-  EchoOutlineTimeSpan: 0.4
+  EchoOutlineTimeSpan: 0.15
   ReturnEchoDelay: 1000
   isTest: 0
+  BatNoises:
+  - {fileID: 8300000, guid: 0ec8eade3d922584480de48b4855795b, type: 3}
+  - {fileID: 8300000, guid: 7e3d5244c52a9594a9a61a359d83e9b5, type: 3}
+  - {fileID: 8300000, guid: d45c83416e1cbb348a720e136ee3abf2, type: 3}
+  - {fileID: 8300000, guid: edc0ae811d50742478022f77a852cd8f, type: 3}
+  MothNoises:
+  - {fileID: 8300000, guid: c2c2c5f1c303dac4b9d579d1391da3d3, type: 3}
+  - {fileID: 8300000, guid: 26183f3eb3754324d9b991bb86aabd92, type: 3}
+  flapSource: {fileID: 82992387412087072}
+  pingSource: {fileID: 82170657076273632}
 --- !u!136 &136256995445246400
 CapsuleCollider:
   m_ObjectHideFlags: 1
