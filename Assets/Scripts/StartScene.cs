@@ -19,8 +19,6 @@ public class StartScene : MonoBehaviour {
 	void Start () {
         previousTimeCheck = Time.time;
         MusicManager._SwitchTo(0);
-        GameObject.Find("TimeLeftUI").GetComponent<Text>().text = "";
-
     }
 
     // Update is called once per frame
@@ -41,13 +39,13 @@ public class StartScene : MonoBehaviour {
     }
     public void StartGame()
     {
-        time_DoneReadingInstructions = Time.time + timeSpan_readingInstructions;
-        readingInstructions = true;
+        //time_DoneReadingInstructions = Time.time + timeSpan_readingInstructions;
+        //readingInstructions = true;
         instructionals.SetActive(true);
         MusicManager._SwitchTo(1);
     }
     
-    private void LoadGamz()
+    public void LoadGamz()
     {
         SceneManager.LoadScene(1);
     }

@@ -150,7 +150,9 @@ public class PlaneControls : Photon.MonoBehaviour {
         ) {
             isFlapping = false;
             m_Animator.SetBool("Flap", isFlapping);
-            flapSource.Pause();
+            if(isMoth == false) {
+                flapSource.Pause();
+            }
         }
         if(!isFlapping && (
             Mathf.Abs(currentRot.x) > MinimumHoverRotSpeedX ||
@@ -158,7 +160,9 @@ public class PlaneControls : Photon.MonoBehaviour {
         ) {
             isFlapping = true;
             m_Animator.SetBool("Flap", isFlapping);
-            flapSource.Play();
+            if(isMoth == false) {
+                flapSource.Play();
+            }
         }
 
         if (isTest)
@@ -204,10 +208,12 @@ public class PlaneControls : Photon.MonoBehaviour {
             //CBUG.Do("Stopping!");
             moveStop = true;
             m_Animator.SetBool("Stop", moveStop);
+            flapSource.Pause();
         } else if (Input.GetAxis("Stop") == 0 && isMoth && moveStop == true )
         {
             //CBUG.Do("Resuming Moving!");
             moveStop = false;
+            flapSource.Play();
             m_Animator.SetBool("Stop", moveStop);
         }
 
