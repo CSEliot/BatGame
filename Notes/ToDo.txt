@@ -1,0 +1,6 @@
+How many bats are in play VS Moths
+Total players online
+bats respawn in center
+hamper non-collidable
+collision weird in some area somewhere
+is the outlining lost on moths/bats??
