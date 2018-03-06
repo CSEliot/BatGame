@@ -69,6 +69,9 @@ public class PlaneControls : Photon.MonoBehaviour {
     public AudioSource flapSource;
     public AudioSource pingSource;
 
+    public Vector3 SpawnLocation;
+    public Quaternion SpawnRotation;
+
     // Use this for initialization
     void Start () {
 
@@ -263,7 +266,7 @@ public class PlaneControls : Photon.MonoBehaviour {
             Destroy(myCam);
             PhotonNetwork.Destroy(gameObject);
             var rotation = new Vector3(0f, transform.rotation.eulerAngles.y, 0f);
-            GameObject newPlayerObject = PhotonNetwork.Instantiate("Bat", transform.position, Quaternion.Euler(rotation), 0);
+            GameObject newPlayerObject = PhotonNetwork.Instantiate("Bat", SpawnLocation, SpawnRotation, 0);
         }
     }
 
@@ -275,7 +278,7 @@ public class PlaneControls : Photon.MonoBehaviour {
             Destroy(myCam);
             PhotonNetwork.Destroy(gameObject);
             var rotation = new Vector3(0f, transform.rotation.eulerAngles.y, 0f);
-            GameObject newPlayerObject = PhotonNetwork.Instantiate("Moth", transform.position, Quaternion.Euler(rotation), 0);
+            GameObject newPlayerObject = PhotonNetwork.Instantiate("Moth", SpawnLocation, SpawnRotation, 0);
         }
     }
 
@@ -344,6 +347,15 @@ public class PlaneControls : Photon.MonoBehaviour {
         r.velocity = currentSpd;
     }
 
+    void OnDestroy() {
+        CBUG.Do("I was eaten!");
+        var roomProperties = PhotonNetwork.room.CustomProperties;
+        //if round started
+        if (isMoth && roomProperties.ContainsKey(roundStarted_keyString) && (bool)roomProperties[roundStarted_keyString] == true) {
+            pingSource.PlayOneShot(BatNoises[3]);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //CBUG.Do("Trigger tag Name Other:" + other.tag + " I am: " + tag);
@@ -352,7 +364,7 @@ public class PlaneControls : Photon.MonoBehaviour {
         if (isMoth && other.name.Contains("Bat") || other.name.Contains("Eat"))
         {
             isMoth = false;
-            //CBUG.Do("BATIFY THE PLAYER!!");
+            CBUG.Do("BATIFY THE PLAYER!!");
             Batify();
             pingSource.PlayOneShot(BatNoises[2]);
         }

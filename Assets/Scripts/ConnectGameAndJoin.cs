@@ -71,7 +71,8 @@ public class ConnectGameAndJoin : Photon.MonoBehaviour
             {
                 GameObject.Find("TimeRemainingUI").GetComponent<Text>().text = "" + 
                     Convert.ToInt32(((double)roomProperties[time_currentGameEndsIn_keyString] - PhotonNetwork.time));//countdownTimeSpan;
-                
+                GameObject.Find("PlayersOnlineUI").GetComponent<Text>().text = $"Moths Remaining: {CountAllMoths()}";
+
                 //Win condition 1
                 if (GameObject.Find("Moth(Clone)") == null)
                 {
@@ -99,6 +100,7 @@ public class ConnectGameAndJoin : Photon.MonoBehaviour
                 GameObject.Find("TimeRemainingUI").GetComponent<Text>().text = "";
                 GameObject.Find("RoundStartsInUI").GetComponent<Text>().text = "Round Starts In: " + 
                     Convert.ToInt32(((double)roomProperties[time_nextGameStartsIn_keyString] - PhotonNetwork.time));
+                GameObject.Find("PlayersOnlineUI").GetComponent<Text>().text = $"Players Online: {PhotonNetwork.room.PlayerCount}";
 
                 if ((double)roomProperties[time_nextGameStartsIn_keyString] - PhotonNetwork.time <= 0)
                 {
@@ -194,12 +196,20 @@ public class ConnectGameAndJoin : Photon.MonoBehaviour
         }
     }
 
+   public void OnPhotonPlayerConnected (PhotonPlayer newPlayer) {
+        var roomProperties = PhotonNetwork.room.CustomProperties;
+        if (roomProperties.ContainsKey(roundStarted_keyString) == false || 
+            (roomProperties.ContainsKey(roundStarted_keyString) == true && (bool)roomProperties[roundStarted_keyString] == false)) {
+        }
+    }
+
     [PunRPC]
     public void StartRoundLocal()
     {
         GameObject.Find("RoundStartsInUI").GetComponent<Text>().text = "";
         GameObject.Find("TimeRemainingBGUI").GetComponent<Image>().enabled = true;
         GameObject.Find("PreRoundHelpUI").GetComponent<Text>().enabled = false;
+        GameObject.Find("PlayersOnlineUI").GetComponent<Text>().text = $"Moths Remaining: {PhotonNetwork.room.PlayerCount - 1}";
     }
 
     public void EndRound(bool batsWin)
@@ -252,5 +262,18 @@ public class ConnectGameAndJoin : Photon.MonoBehaviour
         GameObject.Find("BatsWinSplashUI").GetComponent<Image>().enabled = false;
         GameObject.Find("SnacksWinSplashUI").GetComponent<Image>().enabled = false;
         GameObject.Find("PreRoundHelpUI").GetComponent<Text>().enabled = true;
+    }
+
+    public int CountAllMoths () {
+        var totalMoths = 0;
+        foreach (var player in GameObject.FindGameObjectsWithTag("NetPlayer")) {
+            if (player.name.Contains("Moth")) {
+                totalMoths++;
+            }
+        }
+        if (GameObject.FindGameObjectWithTag("Player").name.Contains("Moth")) {
+            totalMoths++;
+        }
+        return totalMoths;
     }
 }
