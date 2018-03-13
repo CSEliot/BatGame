@@ -267,6 +267,8 @@ public class PlaneControls : Photon.MonoBehaviour {
             PhotonNetwork.Destroy(gameObject);
             var rotation = new Vector3(0f, transform.rotation.eulerAngles.y, 0f);
             GameObject newPlayerObject = PhotonNetwork.Instantiate("Bat", SpawnLocation, SpawnRotation, 0);
+            newPlayerObject.GetComponent<PlaneControls>().SpawnLocation = SpawnLocation;
+            newPlayerObject.transform.position = SpawnLocation;
         }
     }
 
@@ -279,6 +281,8 @@ public class PlaneControls : Photon.MonoBehaviour {
             PhotonNetwork.Destroy(gameObject);
             var rotation = new Vector3(0f, transform.rotation.eulerAngles.y, 0f);
             GameObject newPlayerObject = PhotonNetwork.Instantiate("Moth", SpawnLocation, SpawnRotation, 0);
+            newPlayerObject.GetComponent<PlaneControls>().SpawnLocation = SpawnLocation;
+            newPlayerObject.transform.position = SpawnLocation;
         }
     }
 

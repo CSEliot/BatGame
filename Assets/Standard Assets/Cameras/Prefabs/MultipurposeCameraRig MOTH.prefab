@@ -181,16 +181,16 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94b04ec3bda6b7747aa53936ef3b0ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clipMoveTime: 0.05
   returnTime: 0.4
-  sphereCastRadius: 0.1
+  sphereCastRadius: 9
   visualiseInEditor: 1
-  closestDistance: 0.5
+  closestDistance: 0.01
   dontClipTag: Player
 --- !u!124 &12400000
 Behaviour:

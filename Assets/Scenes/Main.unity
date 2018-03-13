@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 2463055}
   m_Layer: 0
   m_Name: FloorCollide
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -302,9 +302,9 @@ RectTransform:
   m_Father: {fileID: 2113761454}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 508, y: 309}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -50.5, y: -50.200012}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &163416662
@@ -340,6 +340,90 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 163416660}
+--- !u!1 &206079652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 206079653}
+  - component: {fileID: 206079656}
+  - component: {fileID: 206079655}
+  - component: {fileID: 206079654}
+  m_Layer: 0
+  m_Name: Cube (5)
+  m_TagString: Terrain
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &206079653
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 206079652}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.26, y: 2.8800004, z: -15.590004}
+  m_LocalScale: {x: 1.05743, y: 2.8172998, z: 30.422499}
+  m_Children: []
+  m_Father: {fileID: 1621377175}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &206079654
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 206079652}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: cc2b00a1e96f29b4b85aeaadbae22a82, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &206079655
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 206079652}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &206079656
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 206079652}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &208021318
 Prefab:
   m_ObjectHideFlags: 0
@@ -387,7 +471,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fdbc95698bbb02841a53170b055de0d7, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 5d4f5a11ec5ff2d4a9057c5fbb055d11, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 5d4f5a11ec5ff2d4a9057c5fbb055d11, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 5d4f5a11ec5ff2d4a9057c5fbb055d11, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &208021319 stripped
@@ -459,7 +548,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 363eeb9a4f2430740b3c595465919e7e, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 363eeb9a4f2430740b3c595465919e7e, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 363eeb9a4f2430740b3c595465919e7e, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &219913594 stripped
@@ -527,13 +621,102 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dd8c699b0f457e74881c7ceaae417846, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 8bcdae9aa44246744a37e50a457ac669, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 8bcdae9aa44246744a37e50a457ac669, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 8bcdae9aa44246744a37e50a457ac669, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &221851523 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 8bcdae9aa44246744a37e50a457ac669, type: 3}
   m_PrefabInternal: {fileID: 221851522}
+--- !u!1 &235370309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 235370310}
+  - component: {fileID: 235370313}
+  - component: {fileID: 235370312}
+  - component: {fileID: 235370311}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Terrain
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &235370310
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 235370309}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.39, y: 3.19, z: -30.65}
+  m_LocalScale: {x: 21.181292, y: 3.1277385, z: 1.0476072}
+  m_Children: []
+  m_Father: {fileID: 1621377175}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &235370311
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 235370309}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: cc2b00a1e96f29b4b85aeaadbae22a82, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &235370312
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 235370309}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &235370313
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 235370309}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &251783798
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,7 +749,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -113.2, y: 91.39996}
+  m_AnchoredPosition: {x: -100.72, y: 84.3}
   m_SizeDelta: {x: 64.7, y: 75.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &251783800
@@ -601,13 +784,97 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Q
+  m_Text: Make Allies!
 --- !u!222 &251783801
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 251783798}
+--- !u!1 &270627626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 270627627}
+  - component: {fileID: 270627630}
+  - component: {fileID: 270627629}
+  - component: {fileID: 270627628}
+  m_Layer: 0
+  m_Name: Cube (1)
+  m_TagString: Terrain
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &270627627
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 270627626}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10.62, y: 2.88, z: -15.590004}
+  m_LocalScale: {x: 1.0574281, y: 2.8173, z: 30.422499}
+  m_Children: []
+  m_Father: {fileID: 1621377175}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &270627628
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 270627626}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: cc2b00a1e96f29b4b85aeaadbae22a82, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &270627629
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 270627626}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &270627630
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 270627626}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &271336224
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,7 +1043,44 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fdbc95698bbb02841a53170b055de0d7, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &276945644 stripped
@@ -934,7 +1238,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dd8c699b0f457e74881c7ceaae417846, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: d80d6c5795ddbbf4f8aa363993dd22be, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: d80d6c5795ddbbf4f8aa363993dd22be, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: d80d6c5795ddbbf4f8aa363993dd22be, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &323678091 stripped
@@ -984,6 +1293,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
+    - target: {fileID: 100000, guid: d7e0b73d78fe0e44985935fdd223bcbc, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: d7e0b73d78fe0e44985935fdd223bcbc, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: d7e0b73d78fe0e44985935fdd223bcbc, type: 3}
@@ -1057,7 +1370,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bf7d25d98da4882448ffce51cc0a2552, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 3f8e2c021f22b914688e2e8b92feb0ca, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 3f8e2c021f22b914688e2e8b92feb0ca, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 3f8e2c021f22b914688e2e8b92feb0ca, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &366354341 stripped
@@ -1145,7 +1463,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bf7d25d98da4882448ffce51cc0a2552, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 473fbffb34b9b8448af52d316c5ef6b4, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 473fbffb34b9b8448af52d316c5ef6b4, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 473fbffb34b9b8448af52d316c5ef6b4, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &368321884 stripped
@@ -1233,7 +1556,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &462159024 stripped
@@ -1566,7 +1894,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &500919425 stripped
@@ -1604,7 +1937,7 @@ GameObject:
   - component: {fileID: 518144312}
   m_Layer: 0
   m_Name: MiddleWallXCollide (2)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1734,7 +2067,12 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 6d72353b590c04b43953836946c0d2df, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 6d72353b590c04b43953836946c0d2df, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 6d72353b590c04b43953836946c0d2df, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &527384378 stripped
@@ -1822,7 +2160,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &561517216 stripped
@@ -1894,7 +2237,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 7179f757e9050c2438e1e43bbcea8bbf, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 7179f757e9050c2438e1e43bbcea8bbf, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 7179f757e9050c2438e1e43bbcea8bbf, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &564003853 stripped
@@ -1932,7 +2280,7 @@ GameObject:
   - component: {fileID: 574368456}
   m_Layer: 0
   m_Name: ClockFace
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2062,7 +2410,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &590207044 stripped
@@ -2202,6 +2555,10 @@ Prefab:
       propertyPath: m_Name
       value: Ba_thtub_01
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 347d7d01ebd7e124392a7faaa32b8764, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 347d7d01ebd7e124392a7faaa32b8764, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 347d7d01ebd7e124392a7faaa32b8764, type: 3}
@@ -2317,7 +2674,7 @@ GameObject:
   - component: {fileID: 660375811}
   m_Layer: 0
   m_Name: SideWallXCollide
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2439,7 +2796,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 363eeb9a4f2430740b3c595465919e7e, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 363eeb9a4f2430740b3c595465919e7e, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 363eeb9a4f2430740b3c595465919e7e, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &671834742 stripped
@@ -2567,7 +2929,44 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fdbc95698bbb02841a53170b055de0d7, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &677054815 stripped
@@ -2725,6 +3124,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bf7d25d98da4882448ffce51cc0a2552, type: 2}
+    - target: {fileID: 100000, guid: c5ca3a2075ce71a44ba97ddce21019e5, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: c5ca3a2075ce71a44ba97ddce21019e5, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: c5ca3a2075ce71a44ba97ddce21019e5, type: 3}
@@ -2802,7 +3205,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fdbc95698bbb02841a53170b055de0d7, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 99a86da346a13134db5883345acaab3f, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 99a86da346a13134db5883345acaab3f, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 99a86da346a13134db5883345acaab3f, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &696897997 stripped
@@ -2882,7 +3290,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &717452328 stripped
@@ -2974,7 +3387,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: E
+  m_Text: By Eating Moths!
 --- !u!222 &720283277
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2994,7 +3407,7 @@ GameObject:
   - component: {fileID: 726667692}
   m_Layer: 0
   m_Name: SideWallXCollide (2)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3078,7 +3491,7 @@ GameObject:
   - component: {fileID: 726866340}
   m_Layer: 0
   m_Name: CeilingCollide
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3204,7 +3617,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &738048425 stripped
@@ -3292,7 +3710,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c1859b13adaeaa249949bb1cece27c9d, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: e76a878ea08be0741b72cb98c0d250d6, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: e76a878ea08be0741b72cb98c0d250d6, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: e76a878ea08be0741b72cb98c0d250d6, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &749466263 stripped
@@ -3376,7 +3799,20 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bf7d25d98da4882448ffce51cc0a2552, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100002, guid: 155fb7a2eec6450429927a460c1f94fc, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 155fb7a2eec6450429927a460c1f94fc, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 155fb7a2eec6450429927a460c1f94fc, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 155fb7a2eec6450429927a460c1f94fc, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 155fb7a2eec6450429927a460c1f94fc, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &759572407 stripped
@@ -3466,6 +3902,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
+    - target: {fileID: 100000, guid: 61e9e34250c2fd148bad5fc50995c344, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 61e9e34250c2fd148bad5fc50995c344, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 61e9e34250c2fd148bad5fc50995c344, type: 3}
@@ -3543,6 +3983,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.92
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6b840ced5f22b554f85245574f934df8, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 6b840ced5f22b554f85245574f934df8, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 6b840ced5f22b554f85245574f934df8, type: 3}
@@ -3564,7 +4008,7 @@ GameObject:
   - component: {fileID: 784250862}
   m_Layer: 0
   m_Name: ClockFace
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3760,6 +4204,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
+    - target: {fileID: 100000, guid: 406cec862f1c3e844ab79b22b833fe6d, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 406cec862f1c3e844ab79b22b833fe6d, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 406cec862f1c3e844ab79b22b833fe6d, type: 3}
@@ -3837,7 +4285,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: ae2da0759c1b9ce4b8c1565f9d114bb5, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: ae2da0759c1b9ce4b8c1565f9d114bb5, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: ae2da0759c1b9ce4b8c1565f9d114bb5, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &828496625 stripped
@@ -4002,7 +4455,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: d
+  m_Text: D
 --- !u!222 &842198546
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4155,7 +4608,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 363eeb9a4f2430740b3c595465919e7e, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 363eeb9a4f2430740b3c595465919e7e, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 363eeb9a4f2430740b3c595465919e7e, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &848455554 stripped
@@ -4227,6 +4685,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c1859b13adaeaa249949bb1cece27c9d, type: 2}
+    - target: {fileID: 100000, guid: 088541b79b079a6408afefb630fb00f9, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 088541b79b079a6408afefb630fb00f9, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 088541b79b079a6408afefb630fb00f9, type: 3}
@@ -4296,6 +4758,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c1859b13adaeaa249949bb1cece27c9d, type: 2}
+    - target: {fileID: 100000, guid: 80702d8412649ef46b99ae4b84b518c0, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 80702d8412649ef46b99ae4b84b518c0, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 80702d8412649ef46b99ae4b84b518c0, type: 3}
@@ -4330,10 +4796,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 911421299}
-  - component: {fileID: 911421300}
   m_Layer: 0
   m_Name: CoffeeMakerPot_01
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4351,24 +4816,6 @@ Transform:
   m_Father: {fileID: 2128496640}
   m_RootOrder: 60
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &911421300
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9500000, guid: c143ca5a5f95b174387521d4b54c420b,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 911421298}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: c143ca5a5f95b174387521d4b54c420b, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &939574168
 GameObject:
   m_ObjectHideFlags: 0
@@ -4498,7 +4945,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &946919192 stripped
@@ -4574,7 +5026,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fdbc95698bbb02841a53170b055de0d7, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 5d4f5a11ec5ff2d4a9057c5fbb055d11, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 5d4f5a11ec5ff2d4a9057c5fbb055d11, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 5d4f5a11ec5ff2d4a9057c5fbb055d11, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &952522258 stripped
@@ -4654,7 +5111,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &966635929 stripped
@@ -4808,7 +5270,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &973351426 stripped
@@ -4884,6 +5351,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bf7d25d98da4882448ffce51cc0a2552, type: 2}
+    - target: {fileID: 100000, guid: 088541b79b079a6408afefb630fb00f9, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 088541b79b079a6408afefb630fb00f9, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 088541b79b079a6408afefb630fb00f9, type: 3}
@@ -4953,7 +5424,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dd8c699b0f457e74881c7ceaae417846, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 2b444f03a54e7f84aa41cb7dca96f85a, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 2b444f03a54e7f84aa41cb7dca96f85a, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 2b444f03a54e7f84aa41cb7dca96f85a, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1035589048 stripped
@@ -5011,7 +5487,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bf7d25d98da4882448ffce51cc0a2552, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: beb8f41eda4818b49bdd417c11646693, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: beb8f41eda4818b49bdd417c11646693, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: beb8f41eda4818b49bdd417c11646693, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1047908116 stripped
@@ -5087,7 +5568,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fdbc95698bbb02841a53170b055de0d7, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 99a86da346a13134db5883345acaab3f, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 99a86da346a13134db5883345acaab3f, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 99a86da346a13134db5883345acaab3f, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1068383064 stripped
@@ -5175,7 +5661,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c1859b13adaeaa249949bb1cece27c9d, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: e76a878ea08be0741b72cb98c0d250d6, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: e76a878ea08be0741b72cb98c0d250d6, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: e76a878ea08be0741b72cb98c0d250d6, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1146541907 stripped
@@ -5247,7 +5738,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c1859b13adaeaa249949bb1cece27c9d, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: a8354c3ee88a7934c998ab9582338a1e, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: a8354c3ee88a7934c998ab9582338a1e, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: a8354c3ee88a7934c998ab9582338a1e, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1169384740 stripped
@@ -5376,9 +5872,9 @@ RectTransform:
   m_Father: {fileID: 2113761454}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 508.0001, y: 309}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -50.5, y: -50.200012}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1173012672
@@ -5427,7 +5923,7 @@ GameObject:
   - component: {fileID: 1176997425}
   m_Layer: 0
   m_Name: SideWallZ1Collide (2)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5627,7 +6123,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1244285683 stripped
@@ -5695,6 +6196,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c1859b13adaeaa249949bb1cece27c9d, type: 2}
+    - target: {fileID: 100000, guid: 07910e6cfdac5d641bf3d27daf0a89a4, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 07910e6cfdac5d641bf3d27daf0a89a4, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 07910e6cfdac5d641bf3d27daf0a89a4, type: 3}
@@ -5764,6 +6269,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
+    - target: {fileID: 100000, guid: 37ba492f594d55f44a6e3d8c548e5881, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 37ba492f594d55f44a6e3d8c548e5881, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 37ba492f594d55f44a6e3d8c548e5881, type: 3}
@@ -5841,7 +6350,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c1859b13adaeaa249949bb1cece27c9d, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: e76a878ea08be0741b72cb98c0d250d6, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: e76a878ea08be0741b72cb98c0d250d6, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: e76a878ea08be0741b72cb98c0d250d6, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1282135269 stripped
@@ -5913,7 +6427,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fdbc95698bbb02841a53170b055de0d7, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 99a86da346a13134db5883345acaab3f, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 99a86da346a13134db5883345acaab3f, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 99a86da346a13134db5883345acaab3f, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1330631686 stripped
@@ -5951,7 +6470,7 @@ GameObject:
   - component: {fileID: 1332425172}
   m_Layer: 0
   m_Name: SideWallZ1Collide (7)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6030,10 +6549,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1346380548}
-  - component: {fileID: 1346380549}
   m_Layer: 0
   m_Name: Clock_01
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6051,24 +6569,6 @@ Transform:
   m_Father: {fileID: 2128496640}
   m_RootOrder: 58
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!95 &1346380549
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9500000, guid: c4832261a51cd55419da37734062c4be,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1346380547}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: c4832261a51cd55419da37734062c4be, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1356120134
 GameObject:
   m_ObjectHideFlags: 0
@@ -6082,7 +6582,7 @@ GameObject:
   - component: {fileID: 1356120136}
   m_Layer: 0
   m_Name: SideWallZ1Collide (4)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6240,7 +6740,12 @@ Prefab:
       propertyPath: m_Name
       value: Ba_throom_Exterior_01
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: bc6ea296f81586e459586b2f0c63a945, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: bc6ea296f81586e459586b2f0c63a945, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: bc6ea296f81586e459586b2f0c63a945, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1370011098 stripped
@@ -6294,7 +6799,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bf7d25d98da4882448ffce51cc0a2552, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: beb8f41eda4818b49bdd417c11646693, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: beb8f41eda4818b49bdd417c11646693, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: beb8f41eda4818b49bdd417c11646693, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1373783913 stripped
@@ -6378,7 +6888,12 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 6ad1fcdb89e83c548821f98c53d0e219, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 6ad1fcdb89e83c548821f98c53d0e219, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 6ad1fcdb89e83c548821f98c53d0e219, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1378011741 stripped
@@ -6462,7 +6977,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cc2b00a1e96f29b4b85aeaadbae22a82, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 5bcac7b7459b748429fc1618559371aa, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 5bcac7b7459b748429fc1618559371aa, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 5bcac7b7459b748429fc1618559371aa, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1393421527 stripped
@@ -6561,6 +7081,90 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1433813611}
+--- !u!1 &1437181996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1437181997}
+  - component: {fileID: 1437182000}
+  - component: {fileID: 1437181999}
+  - component: {fileID: 1437181998}
+  m_Layer: 0
+  m_Name: Cube (4)
+  m_TagString: Terrain
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1437181997
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1437181996}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.3899994, y: 3.1899998, z: -1.96}
+  m_LocalScale: {x: 21.18129, y: 3.12774, z: 1.0476099}
+  m_Children: []
+  m_Father: {fileID: 1621377175}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1437181998
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1437181996}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: cc2b00a1e96f29b4b85aeaadbae22a82, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &1437181999
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1437181996}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1437182000
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1437181996}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1442916279
 GameObject:
   m_ObjectHideFlags: 0
@@ -6680,6 +7284,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bf7d25d98da4882448ffce51cc0a2552, type: 2}
+    - target: {fileID: 100000, guid: ea9a1fee6190932478854df12c60c78d, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: ea9a1fee6190932478854df12c60c78d, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: ea9a1fee6190932478854df12c60c78d, type: 3}
@@ -6719,7 +7327,7 @@ GameObject:
   - component: {fileID: 1487856101}
   m_Layer: 0
   m_Name: SideWallZ1Collide (6)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6849,7 +7457,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 7d23b18f5a92544438b5e3b01a5fb115, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 7d23b18f5a92544438b5e3b01a5fb115, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 7d23b18f5a92544438b5e3b01a5fb115, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1490425959 stripped
@@ -6929,7 +7542,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1501420110 stripped
@@ -6997,6 +7615,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
+    - target: {fileID: 100000, guid: 61e9e34250c2fd148bad5fc50995c344, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 61e9e34250c2fd148bad5fc50995c344, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 61e9e34250c2fd148bad5fc50995c344, type: 3}
@@ -7086,7 +7708,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bf7d25d98da4882448ffce51cc0a2552, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 473fbffb34b9b8448af52d316c5ef6b4, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 473fbffb34b9b8448af52d316c5ef6b4, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 473fbffb34b9b8448af52d316c5ef6b4, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1528266729 stripped
@@ -7198,7 +7825,7 @@ GameObject:
   - component: {fileID: 1555284249}
   m_Layer: 0
   m_Name: SideWallZ1Collide (5)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -7282,7 +7909,7 @@ GameObject:
   - component: {fileID: 1567634040}
   m_Layer: 0
   m_Name: SideWallXCollide (1)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -7366,7 +7993,7 @@ GameObject:
   - component: {fileID: 1573595733}
   m_Layer: 0
   m_Name: MiddleWallXCollide (3)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -7484,6 +8111,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c1859b13adaeaa249949bb1cece27c9d, type: 2}
+    - target: {fileID: 100000, guid: 07910e6cfdac5d641bf3d27daf0a89a4, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 07910e6cfdac5d641bf3d27daf0a89a4, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 07910e6cfdac5d641bf3d27daf0a89a4, type: 3}
@@ -7561,7 +8192,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fdbc95698bbb02841a53170b055de0d7, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 5d4f5a11ec5ff2d4a9057c5fbb055d11, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 5d4f5a11ec5ff2d4a9057c5fbb055d11, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 5d4f5a11ec5ff2d4a9057c5fbb055d11, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1604777845 stripped
@@ -7629,6 +8265,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
+    - target: {fileID: 100000, guid: e0d89525af7477640a8c2d6713fa6b15, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: e0d89525af7477640a8c2d6713fa6b15, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: e0d89525af7477640a8c2d6713fa6b15, type: 3}
@@ -7649,7 +8289,7 @@ MeshCollider:
   m_GameObject: {fileID: 1620577803}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -7698,6 +8338,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cc2b00a1e96f29b4b85aeaadbae22a82, type: 2}
+    - target: {fileID: 100000, guid: 8b80c17f3d1d354498c9dd2684be203d, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 8b80c17f3d1d354498c9dd2684be203d, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 8b80c17f3d1d354498c9dd2684be203d, type: 3}
@@ -7724,6 +8368,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 8b80c17f3d1d354498c9dd2684be203d, type: 3}
+--- !u!65 &1621377178
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1621377176}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 21.887817, y: 6.138399, z: 33.081413}
+  m_Center: {x: -1.5560923, y: 2.55855, z: -16.54071}
 --- !u!1 &1634600554
 GameObject:
   m_ObjectHideFlags: 0
@@ -7833,6 +8489,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
+    - target: {fileID: 100000, guid: d7e0b73d78fe0e44985935fdd223bcbc, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: d7e0b73d78fe0e44985935fdd223bcbc, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: d7e0b73d78fe0e44985935fdd223bcbc, type: 3}
@@ -7910,7 +8570,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1650384631 stripped
@@ -7994,7 +8659,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cc2b00a1e96f29b4b85aeaadbae22a82, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 9b0db7d7aa3a8434da0bad6781f16abf, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 9b0db7d7aa3a8434da0bad6781f16abf, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 9b0db7d7aa3a8434da0bad6781f16abf, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1669121483 stripped
@@ -8122,7 +8792,44 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fdbc95698bbb02841a53170b055de0d7, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 99fa7b8147beb124999896934dc13f39, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1697575358 stripped
@@ -8292,7 +8999,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1708319759 stripped
@@ -8330,7 +9042,7 @@ GameObject:
   - component: {fileID: 1725078419}
   m_Layer: 0
   m_Name: CoffeeMaker
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -8520,7 +9232,7 @@ GameObject:
   - component: {fileID: 1772740339}
   m_Layer: 0
   m_Name: SideWallZ1Collide (3)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -8602,7 +9314,7 @@ GameObject:
   - component: {fileID: 1790953608}
   m_Layer: 0
   m_Name: MantleClock_01
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -8651,7 +9363,7 @@ GameObject:
   - component: {fileID: 1791767426}
   m_Layer: 0
   m_Name: Mantle_Clock 1
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -8789,7 +9501,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1810623765 stripped
@@ -8873,7 +9590,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: dc7b26f601a4d074cb3bcdc44426a067, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: dc7b26f601a4d074cb3bcdc44426a067, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: dc7b26f601a4d074cb3bcdc44426a067, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1812137478 stripped
@@ -8953,7 +9675,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1815453937 stripped
@@ -9045,7 +9772,12 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 473fbffb34b9b8448af52d316c5ef6b4, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 473fbffb34b9b8448af52d316c5ef6b4, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 473fbffb34b9b8448af52d316c5ef6b4, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1817633233 stripped
@@ -9066,7 +9798,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 473fbffb34b9b8448af52d316c5ef6b4, type: 3}
@@ -9234,7 +9966,20 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 100002, guid: 155fb7a2eec6450429927a460c1f94fc, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 155fb7a2eec6450429927a460c1f94fc, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 155fb7a2eec6450429927a460c1f94fc, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 155fb7a2eec6450429927a460c1f94fc, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 155fb7a2eec6450429927a460c1f94fc, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1826911259 stripped
@@ -9290,7 +10035,7 @@ GameObject:
   - component: {fileID: 1837753594}
   m_Layer: 0
   m_Name: Coffee_Pot
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -9420,7 +10165,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c1859b13adaeaa249949bb1cece27c9d, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: e76a878ea08be0741b72cb98c0d250d6, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: e76a878ea08be0741b72cb98c0d250d6, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: e76a878ea08be0741b72cb98c0d250d6, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1891429092 stripped
@@ -9488,6 +10238,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bf7d25d98da4882448ffce51cc0a2552, type: 2}
+    - target: {fileID: 100000, guid: 43c27aa7d58314e449a5e6f6ccde4795, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 43c27aa7d58314e449a5e6f6ccde4795, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 43c27aa7d58314e449a5e6f6ccde4795, type: 3}
@@ -9510,7 +10264,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 43c27aa7d58314e449a5e6f6ccde4795, type: 3}
@@ -9557,6 +10311,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bf7d25d98da4882448ffce51cc0a2552, type: 2}
+    - target: {fileID: 100000, guid: 85c52292950363d46ae3c36d1758ea46, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 85c52292950363d46ae3c36d1758ea46, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 85c52292950363d46ae3c36d1758ea46, type: 3}
@@ -9642,7 +10400,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cc2b00a1e96f29b4b85aeaadbae22a82, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: 9b078904a59d5a644ab1419b7456bb3e, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 9b078904a59d5a644ab1419b7456bb3e, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 9b078904a59d5a644ab1419b7456bb3e, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1917571053 stripped
@@ -9680,7 +10443,7 @@ GameObject:
   - component: {fileID: 1917629401}
   m_Layer: 0
   m_Name: MiddleWallXCollide (4)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -9839,7 +10602,7 @@ GameObject:
   - component: {fileID: 2011987262}
   m_Layer: 0
   m_Name: Sink_Pipe (1)
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -10121,6 +10884,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
+    - target: {fileID: 100000, guid: 8aa1597c28b25fe44a0523b786dae5fd, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 8aa1597c28b25fe44a0523b786dae5fd, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 8aa1597c28b25fe44a0523b786dae5fd, type: 3}
@@ -10315,7 +11082,12 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 94b828a9e622cce4b9cdb9f506120fdd, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: c708a5341b9606a48b2a975adc1faf23, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &2115870191 stripped
@@ -10350,7 +11122,7 @@ GameObject:
   - component: {fileID: 2128496640}
   m_Layer: 0
   m_Name: StaticTerrain
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
