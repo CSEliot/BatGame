@@ -70,6 +70,8 @@ public class PlaneControls : Photon.MonoBehaviour {
     public AudioSource pingSource;
 
     public Vector3 SpawnLocation;
+    public GameObject[] SpawnLocations;
+
     public Quaternion SpawnRotation;
 
     // Use this for initialization
@@ -263,12 +265,13 @@ public class PlaneControls : Photon.MonoBehaviour {
     {
         if (m_PhotonView.isMine)
         {
+            CBUG.Do("Batify!");
             Destroy(myCam);
             PhotonNetwork.Destroy(gameObject);
             var rotation = new Vector3(0f, transform.rotation.eulerAngles.y, 0f);
-            GameObject newPlayerObject = PhotonNetwork.Instantiate("Bat", SpawnLocation, SpawnRotation, 0);
+            GameObject newPlayerObject = PhotonNetwork.Instantiate("Bat", SpawnLocations[0].transform.position, SpawnLocations[0].transform.rotation, 0);
             newPlayerObject.GetComponent<PlaneControls>().SpawnLocation = SpawnLocation;
-            newPlayerObject.transform.position = SpawnLocation;
+            newPlayerObject.GetComponent<PlaneControls>().SpawnLocations = SpawnLocations;
         }
     }
 
@@ -277,12 +280,16 @@ public class PlaneControls : Photon.MonoBehaviour {
     {
         if (m_PhotonView.isMine)
         {
+            Vector3 spawnLocation = SpawnLocations[Random.Range(1, SpawnLocations.Length)].transform.position;
+            Quaternion spawnRotation = SpawnLocations[Random.Range(1, SpawnLocations.Length)].transform.rotation;
+
+            CBUG.Do("Mothify!");
             Destroy(myCam);
             PhotonNetwork.Destroy(gameObject);
             var rotation = new Vector3(0f, transform.rotation.eulerAngles.y, 0f);
-            GameObject newPlayerObject = PhotonNetwork.Instantiate("Moth", SpawnLocation, SpawnRotation, 0);
+            GameObject newPlayerObject = PhotonNetwork.Instantiate("Moth", spawnLocation, spawnRotation, 0);
             newPlayerObject.GetComponent<PlaneControls>().SpawnLocation = SpawnLocation;
-            newPlayerObject.transform.position = SpawnLocation;
+            newPlayerObject.GetComponent<PlaneControls>().SpawnLocations = SpawnLocations;
         }
     }
 

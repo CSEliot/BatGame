@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 5400000}
   - component: {fileID: 11400002}
   - component: {fileID: 11400000}
+  - component: {fileID: 135537839793856724}
   m_Layer: 0
   m_Name: MultipurposeCameraRig BAT
   m_TagString: Untagged
@@ -384,3 +385,15 @@ MonoBehaviour:
   outlineShaderMaterial: {fileID: 0}
   renderTexture: {fileID: 0}
   extraRenderTexture: {fileID: 0}
+--- !u!135 &135537839793856724
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Center: {x: 0, y: 0.49, z: -1.65}

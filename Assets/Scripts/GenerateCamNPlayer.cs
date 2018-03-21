@@ -25,5 +25,6 @@ public class GenerateCamNPlayer : Photon.MonoBehaviour {
         GameObject newPlayerObject = PhotonNetwork.Instantiate("Moth", SpawnLocations[0].transform.position, SpawnLocations[0].transform.rotation, 0);
         newPlayerObject.GetComponent<PlaneControls>().SpawnLocation = SpawnLocations[0].transform.position;
         newPlayerObject.GetComponent<PlaneControls>().SpawnRotation = SpawnLocations[0].transform.rotation;
+        newPlayerObject.GetComponent<PlaneControls>().SpawnLocations = SpawnLocations;
     }
 }

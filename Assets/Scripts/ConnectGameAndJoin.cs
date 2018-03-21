@@ -43,7 +43,7 @@ public class ConnectGameAndJoin : Photon.MonoBehaviour
         if(Application.isEditor || Debug.isDebugBuild)
         {
             timeSpan_Round = 10f;
-            waitTime = 200f;
+            waitTime = 15f;
         }
     }
 
@@ -169,22 +169,13 @@ public class ConnectGameAndJoin : Photon.MonoBehaviour
     {
         if (PhotonNetwork.isMasterClient)
         {
+            CBUG.Do("I am master!");
             var roomProperties = PhotonNetwork.room.CustomProperties;
 
             //Find a rando to become the bat!
             List<GameObject> allPlayers = new List<GameObject>(GameObject.FindGameObjectsWithTag("NetPlayer"));
             allPlayers.Add(GameObject.FindGameObjectWithTag("Player"));
             var IAmBATMAN = UnityEngine.Random.Range(0, allPlayers.Count);
-            for(int x = 0; x < allPlayers.Count; x++)
-            {
-                if(x == IAmBATMAN)
-                {
-                    allPlayers[IAmBATMAN].GetComponent<PhotonView>().RPC("Batify", PhotonTargets.All);
-                } else
-                {
-                    allPlayers[x].GetComponent<PhotonView>().RPC("Mothify", PhotonTargets.All);
-                }
-            }
             
             GameObject.Find("Control Objects").GetComponent<PhotonView>().RPC("StartRoundLocal", PhotonTargets.All);
             
@@ -193,6 +184,15 @@ public class ConnectGameAndJoin : Photon.MonoBehaviour
             roomProperties[time_currentGameEndsIn_keyString] = PhotonNetwork.time + timeSpan_Round;
             roomProperties[roundStarted_keyString] =  true;
             PhotonNetwork.room.SetCustomProperties(roomProperties);
+
+            for (int x = 0; x < allPlayers.Count; x++) {
+                if (x == IAmBATMAN) {
+                    allPlayers[IAmBATMAN].GetComponent<PhotonView>().RPC("Batify", PhotonTargets.All);
+                }
+                else {
+                    allPlayers[x].GetComponent<PhotonView>().RPC("Mothify", PhotonTargets.All);
+                }
+            }
         }
     }
 
